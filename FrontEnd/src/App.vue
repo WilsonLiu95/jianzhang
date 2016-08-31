@@ -9,31 +9,29 @@
 </template>
 
 <script>
-import Display from '_comp/Display.vue'
-import Increment from '_comp/Increment.vue'
-import store from '_vuex/store' // import the store we just created
+  import Display from '_comp/Display.vue'
+  import Increment from '_comp/Increment.vue'
+  import store from '_vuex/store' // import the store we just created
 
-export default{
-      data: function(){
-        return {
-          test:"13232test"
-        }
-      },
-        components: {
-          Display: Display,
-          Increment: Increment
-        },
-        store: store,
-        ready() {
-                  console.log(this)
+  export default {
+    data: function () {
+      return {
+        test: "13232test"
+      }
     },
-      events: {
-    'test': function (msg) {
-      // 事件回调内的 `this` 自动绑定到注册它的实例上
-      alert(msg)
+    components: {
+      Display: Display,
+      Increment: Increment
+    },
+    store,
+    events: {
+      'test': function (msg) {
+        // 事件回调内的 `this` 自动绑定到注册它的实例上
+
+      }
     }
   }
-}
+
 </script>
 
 <style>
@@ -57,6 +55,7 @@ export default{
   }
 
   #app a {
+
     color: #42b983;
     text-decoration: none;
   }

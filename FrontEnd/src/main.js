@@ -5,7 +5,6 @@ import VueResource from 'vue-resource' // 用于发起请求并处理响应
 import routerConfig from './router'
 import App from './App.vue'
 
-
 // =====================安装引入的插件==========================
 Vue.use(VueRouter)
 Vue.use(VueResource)
