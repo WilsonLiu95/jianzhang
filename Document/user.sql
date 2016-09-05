@@ -16,7 +16,7 @@ CREATE TABLE `account_note`.`note_record` (
 	`uid` INT(64) NOT NULL, 
 
 	`note_book_id` INT(11) NOT NULL, 
-    `seq_num` INT(11) NOT NULL, 
+    `record_seq_num` INT(11) NOT NULL, 
 
 	`create_time` DATETIME NOT NULL, 
 	`update_time` DATETIME NULL,
@@ -35,16 +35,22 @@ DROP TABLE IF EXISTS `account_note`.`note_book`;
 CREATE TABLE `account_note`.`note_book` (
 		`id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT, 
 		`uid` INT(64) NOT NULL, 
-		`create_time` DATETIME NOT NULL, 
+		
+        `create_time` DATETIME NOT NULL, 
 		`update_time` DATETIME NULL, 
         `state`  TINYINT(4) NOT NULL DEFAULT 0,
 
 
 		`note_book_name` INT(128) NOT NULL, 
 		`note_book_id` INT(11) NOT NULL, 
-		`bill_json` VARCHAR(8192) NULL, 
+		
+        `budget` INT(11) NULL,
+        `custom_conf` VARCHAR(2048) NULL, 
+        
+        `bill_json` VARCHAR(8192) NULL, 
 		`record_array` VARCHAR(8192) NULL, 
-		`custom_conf` VARCHAR(2048) NULL, 
+		
+
 		PRIMARY KEY (`id`)
 	) ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
