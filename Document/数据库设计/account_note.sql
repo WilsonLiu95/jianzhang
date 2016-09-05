@@ -15,7 +15,8 @@ CREATE TABLE `account_note`.`note_record` (
 	`id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT, 
 	`uid` INT(64) NOT NULL, 
 
-	`note_book_id` INT(11) NOT NULL, 
+	`note_book_id` INT(11) NOT NULL,
+	`user_seq_num` INT(11) NOT NULL, 
     `record_seq_num` INT(11) NOT NULL, 
 
 	`create_time` DATETIME NOT NULL, 
