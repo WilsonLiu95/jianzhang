@@ -14,8 +14,8 @@ var record_1 = {
     note_book_id: 1, // 不可修改字段
     user_seq_num: 10, // 用户创建的第几条数据，不可修改字段
     record_seq_num: 3, // 该账本的第几条数据，不可修改字段
-    create_time: 2015,
-    update_time:2016,
+    create_time: "2016-09-13 00:00:00",
+    update_time: "2016-09-14 00:00:00",
     state:1,  
     account_type: "现金",
     record_type: "支出",
@@ -60,6 +60,9 @@ var user = {
     custom_type_conf:[{
         custom_type: "早餐", // 自定义类型
         record_type: "支出", // 记录类型
+    },{
+        custom_type: "工资", // 自定义类型
+        record_type: "收入", // 记录类型
     }],
     head_url: "http://wilsonliu.cn/cdn/wilsonliuhead.png", // 预留字段
     age: 20, // 预留字段
@@ -79,6 +82,7 @@ var sync_config = user, // 将当前更改过的数据POST到后端
 var user = {}
 var all_record = [record_1,record_2,record_3,record_4,record_5], // 存储用户所有的数据,每生成一条就push一条进来
 // 每个note_book存储一条 
+
 var note_book_1 = {},
 var note_book_2 = {},
 var note_book_3 = {},
@@ -86,15 +90,10 @@ var note_book_3 = {},
 
 /*
 优化思考:
-1. all_record的数据冗余
-这里其实存储在all_record里的数组会存在冗余，因为all_record存储的数据必定在note_book的record_array中存在，
-所以数据量会double了一次。
-
-这里其实也可以通过遍历各个账本的record_array来重新构建all_record,所以理论上也可以去掉all_record。然后需要的时候再对账本进行遍历
-以获取所有记录。
-
-但是这里会增加代码执行过程中的计算量，所以是以空间换时间的一个问题。这里目前来看本地存储应该可以满足双份数据保存的需要，所以先以方便，
-快捷优先。
-
+1. 这里将所有record存储在本地all_record，其他里面都只是存储all_record的索引。这里需要封装一个接口来统一调取all_record中的记录，
+以方便当all_record过大时造成问题，以后可以分组存储但是对外提供统一接口。
+2. 原先准备将数据库中的note_book通过record进行同步，现在改为直接与本地进行同步。否则每次录入多条record都会造成频繁操作note_book。
+所以将这个计算的工作放在终端去执行。(如何同步note_book，第一是用户对基本属性的更改，第二是对bill_array与record_array进行更改，
+都会触发同步操作)
 */
 
