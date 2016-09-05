@@ -25,7 +25,10 @@ var record_1 = {
 }
 
 // 单个账本的数据
-/* state应该有几种情况,因为账本不直接与线上数据同步，而是修改某项数据单独发送，
+/* state应该有几种情况,因为账本不直接与线上数据同步，而是修改一些账本属性字段就同步。如果没网络则存储在sync_noteBook中。
+账本只存在2种状态，
+1. 使用中
+2. 已删除
 */
 var note_book_1 = {
     note_book_id: 1, // 不可修改字段
@@ -48,16 +51,6 @@ var note_book_1 = {
     }], // 1号-31号的账单数组
     record_array: [record_1,record_2, record_3],
 }
-
-
-// ===========================本地存储的数据=================================
-var sync_record = [record_3,record_4,record_5], // 待同步的数组，直接存储数据本身，而非索引
-var all_record = [record_1,record_2,record_3,record_4,record_5], // 存储用户所有的数据,每生成一条就push一条进来
-// 每个note_book存储一条 
-var note_book_1 = {},
-var note_book_2 = {},
-var note_book_3 = {},
-
 //  用户数据   包含user于config两个表的数据
 var user = {
     name:"wilson",
@@ -73,6 +66,24 @@ var user = {
     jobs: "学生", // 预留字段
     address: "湖北武汉" // 预留字段
 }
+
+
+// ===========================本地存储的数据=================================
+// 缓存待同步的数据
+var sync_record = [record_3,record_4,record_5], // 待同步的数组，直接存储数据本身，而非索引
+var sync_noteBook = [option1,option2], // 将POST的ajax的option缓存，一旦有网后就进行同步
+var sync_config = user, // 将当前更改过的数据POST到后端
+
+
+// 本地使用中的数据
+var user = {}
+var all_record = [record_1,record_2,record_3,record_4,record_5], // 存储用户所有的数据,每生成一条就push一条进来
+// 每个note_book存储一条 
+var note_book_1 = {},
+var note_book_2 = {},
+var note_book_3 = {},
+
+
 /*
 优化思考:
 1. all_record的数据冗余
