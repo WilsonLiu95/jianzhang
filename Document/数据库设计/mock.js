@@ -16,6 +16,8 @@ var record_1 = {
     record_seq_num: 3, // 该账本的第几条数据，不可修改字段
     create_time: "2016-09-13 00:00:00",
     update_time: "2016-09-14 00:00:00",
+    date: "2016-09-01", // 日期
+    day_of_week: 1, // 周几
     state:1,  
     account_type: "现金",
     record_type: "支出",
@@ -58,11 +60,26 @@ var user = {
     uid: "7123818af58c015a34b78652f5fb90d7e304a2d825656542733725147fcfc735",
     bkg_img:"http://wilsonliu.cn/cdn/bkg_img.png", // 预留字段
     custom_type_conf:[{
-        custom_type: "早餐", // 自定义类型
+        custom_type: "用餐", // 自定义类型
         record_type: "支出", // 记录类型
     },{
         custom_type: "工资", // 自定义类型
         record_type: "收入", // 记录类型
+    },{
+        custom_type: "零食", // 自定义类型
+        record_type: "支出", // 记录类型
+    },{
+        custom_type: "交通", // 自定义类型
+        record_type: "支出", // 记录类型
+    },{
+        custom_type: "娱乐", // 自定义类型
+        record_type: "支出", // 记录类型
+    },{
+        custom_type: "社交", // 自定义类型
+        record_type: "支出", // 记录类型
+    },{
+        custom_type: "购物", // 自定义类型
+        record_type: "支出", // 记录类型
     }],
     head_url: "http://wilsonliu.cn/cdn/wilsonliuhead.png", // 预留字段
     age: 20, // 预留字段
@@ -95,5 +112,7 @@ var note_book_3 = {},
 2. 原先准备将数据库中的note_book通过record进行同步，现在改为直接与本地进行同步。否则每次录入多条record都会造成频繁操作note_book。
 所以将这个计算的工作放在终端去执行。(如何同步note_book，第一是用户对基本属性的更改，第二是对bill_array与record_array进行更改，
 都会触发同步操作)
+3. 索引优化
+
 */
 
