@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en" manifest="manifest.php">
+<head>
+    <meta charset="utf-8" />
+
+    <!-- meta that make it a webapp -->
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="msapplication-tap-highlight" content="no" />
+
+    <!-- icons and splash screens -->
+    <link rel="apple-touch-icon" sizes="144x144" href="images/icon.png">
+    <link rel="apple-touch-startup-image" href="images/splashscreen-iphone.png" media="(device-width: 320px) and (device-height: 480px)">
+    <link rel="apple-touch-startup-image" href="images/splashscreen-iphone5.png" media="(device-width: 320px) and (device-height: 568px)">
+    <link rel="apple-touch-startup-image" href="images/splashscreen-iphone6.png" media="(device-width: 375px)">
+    <link rel="apple-touch-startup-image" href="images/splashscreen-iphone6plus.png" media="(device-width: 414px)">
+
+    <title>Fornace</title>
+    <meta property="og:title" content="Fornace" />
+    <meta property="og:url" content="http://www.fornacestudio.com" />
+    <meta property="og:image" content="http://fornacestudio.com/images/screenshot.jpg" />
+
+    <!-- css -->
+    <link rel="stylesheet" href="css/furnax.css">
+    <link rel="stylesheet" href="css/plugins.css">
+    <link rel="stylesheet" href="furnicon/furnicon.min.css">
+    <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+
+<div class="preloader">
+
+</div>
+
+<div id="fnApp">
+    <div id="content">
+
+        <!-- ========================== SPLASH ======================= -->
+
+        <section data-title="Welcome" id="splash" class="view " data-tabbar="none">
+            <header class="view-navbar">
+                <h1>Welcome</h1>
+            </header>
+            <div style="text-align: center">
+                <img src="../images/logo-fornace-rosso.png" class="animated fadeInDown" />
+            </div>
+            <div class="buttons animated fadeInUp">
+                <a class="button large" href="#about">about us</a>
+                <a class="button large" href="#people">people</a>
+                <a class="button large" href="#services">services</a>
+                <a class="button large" href="#projects">our projects</a>
+            </div>
+
+        </section>
+
+
+        <!-- ========================== ABOUT ======================= -->
+
+        <section id="about" class="view ">
+            <header class="view-navbar">
+                <a class="button animation-pushright align-left focus" href="#splash">reset</a>
+                <h1>About</h1>
+            </header>
+            <div class="view-content">
+                <div style="text-align: center">
+                    <img src="images/contents/desk-1.jpg" class="headimage" />
+                </div>
+                <h1 class="view-title animated fadeInDown delayed delayed-600">About</h1>
+                <h2>We are hardcore nerds for what we do. And we love it.</h2>
+                <p style="margin: 1em">
+                    We think of us as <b>artisans of the digital era</b>. We love focusing on one or two projects at a time, taking care of the details and making every product special as it deserves.<br /><br />
+                    We are not afraid to think out of the box and reinvent the wheel whenever we find a new approach would make a better experience.<br><br>
+                    Our mind is mobile-centered but our applications range from desktop, to TV, to touch-enabled screens and totems.<br><br>
+                    We are a crew of peers, mostly located in Italy (our headquarter is in Verona), but we cover different timezones as well, thanks to the two of us who are currently working remotely.<br /><br />
+                    Our clients range from <b>startups</b> to fellow <b>agencies</b> and <b>global brands</b>.<br /><br />
+
+                    <a class="button focus icon mail-alt large" href="mailto:info@fornacestudio.com">Contact Us</a><br /><br />
+
+                    <small style="color:#aaa; font-size: 0.8em">Fornace srl – Via Stazione Vecchia 971 - Sant'Ambrogio di Valpolicella - VR, Italy – Pi: 04045160233 - REA: VR 387212 - CS: 10.000€</small>
+
+                </p>
+
+            </div>
+        </section>
+
+        <!-- ========================== SERVICES ======================= -->
+
+        <section id="services" class="view">
+            <header class="view-navbar">
+                <h1>Services</h1>
+            </header>
+            <div style="text-align: center">
+                <img src="images/contents/desk-2.jpg" class="headimage" />
+            </div>
+            <h1 class="view-title animated fadeInDown delayed delayed-600">Services</h1>
+            <p class="listlabel">What we do</p>
+            <ul class="list">
+                <li class="icon star animated zoomIn delayed delayed-200">Digital marketing and strategy</li>
+                <li class="icon user animated zoomIn delayed delayed-300">User experience</li>
+                <li class="icon video animated zoomIn delayed delayed-400">Video and animation</li>
+                <li class="icon html5 animated zoomIn delayed delayed-500">Web (HTML5, PHP , Mongo, JS)</li>
+                <li class="icon mobile animated zoomIn delayed delayed-600">iOS and Android development</li>
+                <li class="icon college animated zoomIn delayed delayed-700">Teaching and consulting</li>
+                <li class="icon pencil animated zoomIn delayed delayed-800">Graphic and product design</li>
+                <li class="icon database animated zoomIn delayed delayed-900">System administration</li>
+            </ul>
+
+        </section>
+
+
+        <!-- ========================== PROJECTS ======================= -->
+
+        <section id="projects" class="view">
+            <header class="view-navbar">
+                <h1>Projects</h1>
+            </header>
+            <div style="text-align: center">
+                <img src="images/contents/desk-3.jpg" class="headimage" />
+            </div>
+            <h2>Talk about love</h2>
+            <ul class="list">
+                <li><a class="animated zoomIn delayed delayed-200 icon heart-1" href="#clients">Clients</a></li>
+                <li><a class="animated zoomIn delayed delayed-400 icon award" href="#awards">Awards</a></li>
+            </ul>
+
+            <h1 class="view-title animated fadeInDown delayed delayed-600">Projects</h1>
+            <h2>We are still writing our new portfolio. In the meanwhile, these are a few links to older projects</h2>
+            <ul class="list">
+                <li class="has-icon animated zoomIn delayed delayed-200"><img src="images/oldportfolio/sportplanner.png" /><a class="do-not-steal" target="_blank" href="http://sportplanner.com">Sportplanner<span class="icon export">webapp</span></a></li>
+                <li class="has-icon animated zoomIn delayed delayed-300"><img src="images/oldportfolio/marryclick.png" /><a class="do-not-steal" target="_blank" href="http://marryclick.com/">Marryclick<span class="icon export">croudsourcing</span></a></li>
+                <li class="has-icon animated zoomIn delayed delayed-400"><img src="images/oldportfolio/frequenze.png" /><a class="do-not-steal" target="_blank" href="https://itunes.apple.com/it/app/frequenze-radio/id492712894?mt=8&affId=1507406">Frequenze Radio<span class="icon export">mobile app</span></a></li>
+                <li class="has-icon animated zoomIn delayed delayed-500"><img src="images/oldportfolio/espresso.png.gif" /><a class="do-not-steal" target="_blank" href="https://itunes.apple.com/it/app/espresso-html/id487303069?mt=8">Espresso HTML<span class="icon export">mobile app</span></a></li>
+                <li class="has-icon animated zoomIn delayed delayed-600"><img src="images/oldportfolio/mille.png" /><a class="do-not-steal" target="_blank" href="http://millerimedi.it">Millerimedi<span class="icon export">ecommerce</span></a></li>
+                <li class="has-icon animated zoomIn delayed delayed-700"><img src="images/oldportfolio/off.png" /><a class="do-not-steal" target="_blank" href="http://www.officineformative.it">OFF by Intesa SanPaolo<span class="icon export">portal</span></a></li>
+                <li class="has-icon animated zoomIn delayed delayed-800"><img src="images/oldportfolio/quicibo.png" /><a class="do-not-steal" target="_blank" href="http://www.quicibo.it">Quicibo MVP Dsgn/Front<span class="icon export">portal</span></a></li>
+                <li class="has-icon animated zoomIn delayed delayed-900"><img src="images/oldportfolio/sfama.png.gif" /><a class="do-not-steal" target="_blank" href="http://sfama.me">Sfama<span class="icon export">platform</span></a></li>
+                <li class="has-icon animated zoomIn delayed delayed-1000"><img src="images/oldportfolio/9minutes.png" /><a class="do-not-steal" target="_blank" href="http://9minutesapp.com">Nine Minutes<span class="icon export">mobile app</span></a></li>
+                <li class="has-icon animated zoomIn delayed delayed-1100"><img src="images/oldportfolio/selfie.jpg" /><a class="do-not-steal" target="_blank" href="http://selfie-battle.com">Selfie Battle<span class="icon export">mobile app</span></a></li>
+            </ul>
+            </p>
+
+        </section>
+
+
+
+        <!-- ========================== AWARDS ======================= -->
+
+        <section id="awards" class="view ">
+            <header class="view-navbar">
+                <a class="backbutton"> </a>
+                <h1>Awards</h1>
+            </header>
+            <div class="view-content">
+                <div style="text-align: center">
+                    <img src="images/contents/awards.jpg" class="headimage" />
+                </div>
+                <h1 class="view-title animated fadeInDown delayed delayed-600">Awards</h1>
+                <h2>And we just started collecting them.</h2>
+                <p style="margin: 1em">
+                    We are proud to have made it <b>3 times</b> in the Best New Apps section for iPhone.<br>Extra-proud to have been officially chosen by Apple within the <b>Best 25 Apps of the Year</b>.<br /><br />
+                    Also, how can't we love working with startups?<br>
+                    Mindblown by the awards and recognitions received both by <b>Baby Pit Stoppers</b> and <b>OpenMove</b> in 2015, just one month apart from each other.<br><br>
+                    And yet we are not satisfied. If you feel like helping us win some more, get in touch and we'll do it together!<br /><br />
+
+                </p>
+
+            </div>
+        </section>
+
+
+
+
+        <!-- ========================== CLIENTS ======================= -->
+
+        <section id="clients" class="view">
+            <header class="view-navbar">
+                <a class="backbutton"> </a>
+                <h1>Clients</h1>
+            </header>
+            <div class="view-content">
+                <div style="text-align: center">
+                    <img src="images/contents/clients.jpg" class="headimage" />
+                </div>
+                <h1 class="view-title animated fadeInDown delayed delayed-600">Clients</h1>
+                <h2>We only work for the greater good.</h2>
+                <p style="margin: 1em">
+                    We prefer working when we love the idea or the product too.<br />Be them a fine restaurant, awesome startup ideas or the most affirmed brands.<br />These are but a few of the clients we worked for:<br><br>
+
+                    <img src="images/contents/brands.jpg" />
+                </p>
+
+            </div>
+        </section>
+
+
+
+
+
+        <!-- ========================== PEOPLE ======================= -->
+
+        <section id="people" class="view ">
+            <header class="view-navbar">
+                <h1>People</h1>
+            </header>
+            <div style="text-align: center">
+                <img src="images/contents/people.jpg" class="headimage" />
+            </div>
+            <h1 class="view-title animated fadeInDown delayed delayed-600">People</h1>
+            <h2>This is our core team</h2>
+            <ul class="list">
+                <li class="has-icon"><img src="images/people/francesco_small.jpg" /><a href="#francesco">Francesco Frapporti</a></li>
+                <li class="has-icon"><img src="images/people/luca_small.jpg" /><a href="#luca">Luca Cisorio</a></li>
+                <li class="has-icon"><img src="images/people/martin_small.jpg" /><a href="#martin">Martin Pham</a></li>
+                <li class="has-icon"><img src="images/people/gabriele_small.jpg" /><a href="#gabriele">Gabriele Chesi</a></li>
+                <li class="has-icon"><img src="images/people/valentina_small.jpg" /><a href="#valentina">Valentina Fontana</a></li>
+                <li><a href="#matteo">Matteo Pittarello <span>Business Intelligence</span></a></li>
+                <li>Milo Caceffo <span>Web</span></li>
+                <li>Federico Chesi <span>Marketing</span></li>
+                <li class="has-icon"><img src="images/people/matteo_b_small.jpg" /><a href="#matteo_b">Matteo Benetti</a></li>
+                <li class="has-icon"><img src="images/people/andrea_small.jpg" /><a href="#andrea">Andrea Pontara</a></li>
+
+            </ul>
+            <p class="listlabel">We also work with</p>
+            <ul class="list">
+                <li><a class="do-not-steal" target="_blank" href="https://www.linkedin.com/in/filippo-perlini-2a691054" target="_blank">Filippo Perlini<span class="icon export">Designer</span></a></li>
+                <li><a class="do-not-steal" target="_blank" href="https://www.linkedin.com/profile/view?id=18642649&authType=NAME_SEARCH&authToken=rTyC&locale=en_US&trk=tyah2&trkInfo=tarId%3A1415522872234%2Ctas%3Aantonella%20sini%2Cidx%3A1-1-1" target="_blank">Antonella Sinigaglia<span class="icon export">Designer</span></a></li>
+                <li><a class="do-not-steal" target="_blank" href="https://www.facebook.com/matilde.amatucci" target="_blank">Matilde Amatucci<span class="icon export">Creative</span></a></li>
+                <li><a class="do-not-steal" target="_blank" href="https://www.linkedin.com/in/annacaprini" target="_blank">Anna Caprini<span class="icon export">Content Manager, PR</span></a></li>
+                <li><a class="do-not-steal" target="_blank" href="https://www.linkedin.com/profile/view?id=78984025&authType=NAME_SEARCH&authToken=XxQM&locale=en_US&trk=tyah2&trkInfo=tarId%3A1415522857396%2Ctas%3Aemanuele%20dona%2Cidx%3A1-1-1" target="_blank">Emanuele Donà<span class="icon export">Developer</span></a></li>
+                <li><a class="do-not-steal" target="_blank" href="https://www5.unitn.it/People/it/Web/Persona/PER0011281#INFO" target="_blank">Alvise Schiavon<span class="icon export">Legal</span></a></li>
+                <li><a class="do-not-steal" target="_blank" href="https://www.linkedin.com/in/francesco-speri-658b007" target="_blank">Francesco Speri<span class="icon export">3D</span></a></li>
+            </ul>
+            <p style="margin: 1em">
+                We also created rock solid relationships with <b>awesome agencies</b> which offer complimentary services, to be a one-stop solution even when the projects are more challenging.
+            </p>
+        </section>
+
+        <!-- ========================== PEOPLE ======================= -->
+
+        <section data-title="Team" id="francesco" class="view">
+            <div style="text-align: center">
+                <img src="images/people/francesco.jpg" class="headimage" />
+            </div>
+            <h1 class="view-title animated fadeInDown delayed delayed-600">Francesco</h1>
+            <h2>Managing partner of Fornace, focused on designing and writing interactive apps in <b>HTML5</b> and <b>JavaScript</b>.<br><br>His ultimate goal is to achieve great <b>user experiences</b>.<br><br>When we have some important project he becomes a fully dedicated project manager and advisor, ensuring that everything ends up <b>brilliantly</b>.</h2>
+        </section>
+
+        <section data-title="Team" id="luca" class="view">
+            <div style="text-align: center">
+                <img src="images/people/luca.jpg" class="headimage" />
+            </div>
+            <h1 class="view-title animated fadeInDown delayed delayed-600">Luca</h1>
+            <h2>He is managing partner and his area of expertise is native <b>iOS app</b> development.<br><br>He also knows every detail of the Human Interface Guidelines, ensuring that the projects are both <b>solid and usable</b>.</h2>
+        </section>
+
+        <section data-title="Team" id="martin" class="view">
+            <div style="text-align: center">
+                <img src="images/people/martin.jpg" class="headimage" />
+            </div>
+            <h1 class="view-title animated fadeInDown delayed delayed-600">Martin</h1>
+            <h2>He is a hacker and a smart-ass <b>developer</b>.<br><br>One of the first to crack the insides of iOS at every release; he writes effortlessly in several different languages and is a <b>tireless problem solver</b>.</h2>
+        </section>
+
+        <section data-title="Team" id="valentina" class="view">
+            <div style="text-align: center">
+                <img src="images/people/valentina.jpg" class="headimage" />
+            </div>
+            <h1 class="view-title animated fadeInDown delayed delayed-600">Valentina</h1>
+            <h2>Talented <b>artist</b> and <b>illustrator</b>, Valentina was born with a pencil in her hand.<br>She just can't stop learning stuff and seeing the world in full <b>colors</b>.</h2>
+        </section>
+
+        <section data-title="Team" id="gabriele" class="view">
+            <div style="text-align: center">
+                <img src="images/people/gabriele.jpg" class="headimage" />
+            </div>
+            <h1 class="view-title animated fadeInDown delayed delayed-600">Gabriele</h1>
+            <h2>Passionate about <b>design</b> and ux, he is also a reliable <b>front-end developer</b> with an insatiable appetite for the new stuff.<br>Being also our official lunch <b>cook</b>, we can definitely blame him for the extra pounds.</h2>
+        </section>
+
+        <section data-title="Team" id="matteo_b" class="view">
+            <div style="text-align: center">
+                <img src="images/people/matteo_b.jpg" class="headimage" />
+            </div>
+            <h1 class="view-title animated fadeInDown delayed delayed-600">Matteo</h1>
+            <h2>Mess with his servers and he will throw an army of bad conscious bots at you. Passionate about <b>bitcoins</b> and hacking whatever he can find, Matteo is our cleverest and only <b>sys admin</b>.</h2>
+        </section>
+
+        <section data-title="Team" id="andrea" class="view">
+            <div style="text-align: center">
+                <img src="images/people/andrea.jpg" class="headimage" />
+            </div>
+            <h1 class="view-title animated fadeInDown delayed delayed-600">Andrea</h1>
+            <h2><b>Andrea</b> is a certified sommelier who plays electric guitar and lives in the hipster circles in Rome.<br>He is also a methodic content manager and his mantra is: <b>simplicity is beauty</b>.</h2>
+        </section>
+
+        <section data-title="Team" id="matteo" class="view">
+            <div style="text-align: center">
+                <img src="images/people/matteo.jpg" class="headimage" />
+            </div>
+            <h1 class="view-title animated fadeInDown delayed delayed-600">Matteo</h1>
+            <h2><b>Matteo</b> is a partner which goal is explore the world.<br>Always positive, he doesn't have a job: he is a business consultant on mission from the Karma to create goodness everywhere for <b>everyone</b>.</h2>
+        </section>
+
+
+
+        <!-- end of the views -->
+
+
+        <div id="tabbar">
+            <a href="#about" class="icon heart">About</a>
+            <a href="#people" class="icon users">People</a>
+            <a href="#services" class="icon rocket">Services</a>
+            <a href="#projects" class="icon beaker-1">Projects</a>
+        </div>
+
+        <div class="info-popup icon up">
+            Per tornare, premi qui.
+        </div>
+
+
+    </div><!-- end of #content -->
+</div><!-- end of #fnApp -->
+<!-- js -->
+
+<script src="js/zepto.min.js"></script>
+<script src="js/furnax.js"></script>
+<script src="js/plugins.js"></script>
+
+<script>
+    $(function() {
+        furnax.init();
+        $(window).on("load", function() {
+            setTimeout( function() { furnax.showInstallPrompt(); }, 4000);
+        });
+    });
+
+</script>
+
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-26419628-1', 'auto');
+    ga('require', 'displayfeatures');
+    ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>
+
