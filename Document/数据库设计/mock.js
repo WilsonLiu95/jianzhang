@@ -10,7 +10,8 @@
 6. 上传后删除并未与线上同步 (同步后，则回归状态4)
 7. 已删除
 */
-var record_1 = {
+
+var record_example = {
     note_book_id: 1, // 不可修改字段
     user_seq_num: 10, // 用户创建的第几条数据，不可修改字段
     record_seq_num: 3, // 该账本的第几条数据，不可修改字段
@@ -25,6 +26,7 @@ var record_1 = {
     comment: "今天早餐吃的有点多",
     money: 20,
 }
+
 
 // 单个账本的数据
 /* state应该有几种情况,因为账本不直接与线上数据同步，而是修改一些账本属性字段就同步。如果没网络则存储在sync_noteBook中。

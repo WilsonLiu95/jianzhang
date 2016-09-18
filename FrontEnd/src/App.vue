@@ -2,66 +2,72 @@
   <div id="app">
     <router-view>
     </router-view>
-    <Display :wilson="test"></Display>
-    <Increment></Increment>
-    <input type="text" v-model="test">
+
   </div>
 </template>
 
 <script>
-  import Display from '_comp/Display.vue'
-  import Increment from '_comp/Increment.vue'
-  import store from '_vuex/store' // import the store we just created
-
   export default {
     data: function () {
       return {
-        test: "13232test"
-      }
-    },
-    components: {
-      Display: Display,
-      Increment: Increment
-    },
-    store,
-    events: {
-      'test': function (msg) {
-        // 事件回调内的 `this` 自动绑定到注册它的实例上
 
       }
+    },
+    events: {
+
+    },
+    ready () {
+      AppCacheListen();
     }
   }
-
+      function AppCacheListen() {
+        var appCache = window.applicationCache;
+        window.addEventListener('load', function (e) {
+        appCache.addEventListener('updateready', function (e) {
+            if (appCache.status == appCache.UPDATEREADY) {
+                // Browser downloaded a new app cache.
+                // Swap it in and reload the page to get the new hotness.
+                appCache.swapCache();
+                if (confirm('有新版本，确定重新加载?')) {
+                    window.location.reload();
+                }
+            } else {
+                // Manifest didn’t changed. Nothing new to server.
+                console.log("manifest didn\'t change");
+            }
+        }, false);
+      }, false);}
 </script>
 
 <style>
-  html {
-    height: 100%;
+  * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
   }
 
-  body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
+  body,
+  ul,
+  li {
+    padding: 0;
+    margin: 0;
+    border: 0;
   }
 
-  #app {
-    color: #2c3e50;
-    margin-top: -100px;
-    max-width: 600px;
-    font-family: Source Sans Pro, Helvetica, sans-serif;
-    text-align: center;
+  .main-body {
+    position: relative;
+    top: 42px;
   }
 
-  #app a {
-
-    color: #42b983;
-    text-decoration: none;
+  .left {
+    float: left;
   }
 
-  .logo {
-    width: 100px;
-    height: 100px
+  .right {
+    float: right;
+  }
+
+  .hide {
+    display: none;
   }
 </style>

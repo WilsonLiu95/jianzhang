@@ -18,6 +18,8 @@
 框架主要采用Vue.js辅助以vue-router,vue-resources,Vuex等插件，构建采用Vue-cli，使用了webpack与babel。采用sass编写
 样式，同时利用饿了么的mint-u这套组件库。
 
+插件列表
+- iScroll.js
 ### 后端
 采用node.js的express框架，接口采用Restful的理念。数据库初定mysql。采用sequelize这个ORM工具操作mysql。
 
