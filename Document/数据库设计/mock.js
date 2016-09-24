@@ -92,10 +92,11 @@ var user = {
 
 // ===========================本地存储的数据=================================
 // 缓存待同步的数据
-var sync_record = [record_3,record_4,record_5], // 待同步的数组，直接存储数据本身，而非索引
-var sync_noteBook = [option1,option2], // 将POST的ajax的option缓存，一旦有网后就进行同步
-var sync_config = user, // 将当前更改过的数据POST到后端
-
+var sync = {
+    record: [record_3,record_4,record_5], // 待同步的数组，直接存储数据本身，而非索引
+    noteBook: [option1,option2], // 将POST的ajax的option缓存，一旦有网后就进行同步
+    config: user // 将当前更改过的数据POST到后端
+}
 
 // 本地使用中的数据
 var user = {}

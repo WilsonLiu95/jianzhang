@@ -1,7 +1,7 @@
 var record_example = {
   note_book_id: 1, // 不可修改字段
   user_seq_num: 10, // 用户创建的第几条数据，不可修改字段
-  record_seq_num: 3, // 该账本的第几条数据，不可修改字段
+  record_seq_num: 1, // 该账本的第几条数据，不可修改字段
   create_time: "2016-09-13 00:00:00",
   update_time: "2016-09-14 00:00:00",
   date: "2016-09-01", // 日期
@@ -15,8 +15,10 @@ var record_example = {
 }
 var all_record = [];
 for (var i = 0; i < 31; i++) {
-  all_record[i]= record_example;
+  record_example.record_seq_num = i;
+  all_record.push(record_example);
 }
+
 var note_book_1 = {
   note_book_id: 1, // 不可修改字段
   note_book_name: "201509开学季",
@@ -221,5 +223,6 @@ var user = {
 }
 export default {
   all_record:all_record,
-  note_book_1: note_book_1
+  note_book_1: note_book_1,
+  user: user
 }

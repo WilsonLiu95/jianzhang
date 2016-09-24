@@ -4,10 +4,7 @@ export default function (router) {
   })
   router.map({
     '/index': {
-      component: function (resolve) {
-        // somehow retrieve your component definition from server...
-        require(['_views/index.vue'], resolve)
-      }
+      component: require('_views/index.vue')
     },
     '/config': {
       component: function (resolve) {
@@ -15,6 +12,15 @@ export default function (router) {
         require(['_views/config.vue'], resolve)
       }
     },
+    '/makenote': {
+      component: require('_views/make-note.vue')
+    },
+    // '/': {
+    //   component: function (resolve) {
+    //     // somehow retrieve your component definition from server...
+    //     require(['_views/make-note.vue'], resolve)
+    //   }
+    // },
     '404': {
       component: require('_views/not-found.vue')
     }

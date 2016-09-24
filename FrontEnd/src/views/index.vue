@@ -2,75 +2,157 @@
   <div class="animated" transition="slide">
     <mt-header fixed title="当前账本:201609">
       <mt-button v-link="'/config'" icon="more" slot="left"></mt-button>
+      <mt-button v-link="'/makenote'" slot="right">+</mt-button>
     </mt-header>
     <div class="main-body">
-      <date-note>
+      <date-note :bill_array="bill_array" :select.sync="select">
       </date-note>
 
-<mt-loadmore :top-method="loadTop" :top-status.sync="topStatus">
-  <ul>
-    <li class="note-card" v-for="(index, item) in list">
-      <span>{{item.custom_type}}</span>
-      <span class="right">{{item.record_type ==="支出" ? "-" : "+"}} {{item.money}}</span>
-      </li>
-  </ul>
-  <div slot="top" class="mint-loadmore-top">
-    <span v-show="topStatus !== 'loading'" :class="{ 'rotate': topStatus === 'drop' }">↓</span>
-    <span v-show="topStatus === 'loading'">Loading...</span>
-  </div>
-</mt-loadmore>
-    </div>
+      <mt-loadmore :top-method="loadTop" :top-status.sync="topStatus">
+        <ul class="note-card">
+          <li class="note-card-item" v-for="(index, item) in list" v-touch:swipeleft="swipeLeft" v-touch:swiperight="swipeRight">
+            <div class="note-card-main">
+              <span>{{item.custom_type}}</span>
+              <span class="">{{item.record_type ==="支出" ? "-" : "+"}} {{item.money}}</span>
+            </div>
+            <div class="note-card-right">
+              <span>删除</span>
+            </div>
 
+          </li>
+        </ul>
+        <div slot="top" class="mint-loadmore-top">
+          <span v-show="topStatus === 'loading'">
+            <mt-spinner type="triple-bounce" color="#26a2ff"></mt-spinner>
+            </span>
+        </div>
+      </mt-loadmore>
+    </div>
   </div>
 
 </template>
 <script>
 import dateNote from '_comp/date-note'
 import mock from '../mock'
+import {user, record, noteBook, sync} from '../api/local'
+record.set(mock.all_record)
 export default {
   data: function () {
     return {
       topStatus: "drop",
-      list: mock.all_record,
-      curr_date:"5",
-      pickerVisible: true,
+      bill_array: noteBook.get(1).bill_array,
+      select: 3,
     }
   },
   components: {
     'date-note': dateNote
   },
   computed:{
-
+    list: function(){
+      var arrIdx = this.bill_array[this.select].record_arr_idx
+      var arr = []
+      var all_record = record.get()
+      arrIdx.forEach(function(val, idx){
+        arr.push(all_record[val]);
+      })
+      return arr
+    }
   },
 
   methods: {
-    'test': function (msg) {
-      // 事件回调内的 `this` 自动绑定到注册它的实例上
-      alert(msg.toString());
-//      alert(this.$data.pickerValue.toString())
+    swipeLeft: function (e) {
+      if (e.target.parentElement.className.indexOf("note-card-item") === -1) return
+      e.target.parentElement.classList.remove("swiperight")
+      e.target.parentElement.classList.add("swipeleft")
+    },
+    swipeRight: function (e) {
+      if (e.target.parentElement.className.indexOf("note-card-item") === -1) return
+      e.target.parentElement.classList.remove("swipeleft")
+      e.target.parentElement.classList.add("swiperight")
+
     },
     loadTop: function(){
-      // location.reload();
+      setTimeout(function () {
+        this.topStatus = 'drop'
+        location.href = "./#!/makenote"
+      },100)
+
     }
 
   }
 }
 </script>
 <style>
-
-  .note-card {
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
+  .note-card-item {
     background-color: #fff;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
     font-size: 16px;
     line-height: 1;
-    overflow: hidden;
-    padding: 16px 10px;
+    height:40px;
     position: relative;
     border-top: 1px solid #ccc;
+    width:120%;
   }
+  li {
+    list-style: none;
+  }
+  .swipeleft {
+    animation:swipeleft 0.5s forwards;
+    -moz-animation:swipeleft 0.5s forwards; /* Firefox */
+    -webkit-animation:swipeleft 0.5s forwards; /* Safari and Chrome */
+    -o-animation:swipeleft 0.5s forwards; /* Opera */
+  }
+  .swiperight {
+    animation:swiperight 0.5s forwards;
+    -moz-animation:swiperight 0.5s forwards; /* Firefox */
+    -webkit-animation:swiperight 0.5s forwards; /* Safari and Chrome */
+    -o-animation:swiperight 0.5s forwards; /* Opera */
+  }
+  .note-card-item div {
+    display: inline-block;
+    height:40px;
+  }
+  .note-card-main {
+    float: left;
+    width:83.33%;
+  }
+  .note-card-right {
+    float: left;
+    width:16%;
+    background-color: red;
+  }
+
+  @keyframes swipeleft
+  {
+    from {margin-left: 0}
+    to {margin-left: -60px}
+  }
+
+  @-moz-keyframes swipeleft /* Firefox */
+  {
+    from {margin-left: 0}
+    to {margin-left: -60px}
+  }
+
+  @-webkit-keyframes swipeleft /* Safari 和 Chrome */
+  {
+    from {margin-left: 0}
+    to {margin-left: -60px}
+  }
+  @keyframes swiperight
+  {
+    from {margin-left: -60px}
+    to {margin-left: 0px}
+  }
+  @-moz-keyframes swiperight /* Firefox */
+  {
+    from {margin-left: -60px}
+    to {margin-left: 0px}
+  }
+
+  @-webkit-keyframes swiperight /* Safari 和 Chrome */
+  {
+    from {margin-left: -60px}
+    to {margin-left: 0px}
+  }
+
 </style>

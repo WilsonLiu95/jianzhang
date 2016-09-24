@@ -4,17 +4,25 @@ import VueResource from 'vue-resource' // 用于发起请求并处理响应
 import routerConfig from './router'
 import App from './App.vue'
 import MintUI from 'mint-ui'
+var VueTouch = require('vue-touch')
+
 import 'mint-ui/lib/style.css'
 import 'animate.css'
 // =====================安装引入的插件==========================
 Vue.use(VueRouter)
 Vue.use(VueResource)
+Vue.use(VueTouch)
 Vue.use(MintUI)
+
 // ======================配置路由===============================
 var router = new VueRouter()
 routerConfig(router)
 Vue.transition('slide', {
   enterClass: 'slideInLeft',
+  leaveClass: 'hide'
+})
+Vue.transition('makenote', {
+  enterClass:'slideInUp',
   leaveClass: 'hide'
 })
 // For every new route scroll to the top of the page

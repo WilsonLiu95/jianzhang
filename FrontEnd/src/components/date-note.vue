@@ -2,13 +2,13 @@
   <div id="wrapper">
     <div id="scroller">
       <ul>
-        <li v-for="note in bill_array">
+        <li v-for="note in bill_array" class="date-note-item">
           <h5>{{note.date}}号</h5>
 
           <span>- {{note.payout}}</span>
           <br>
           <span>+ {{note.income}}</span>
-          </li>
+        </li>
       </ul>
     </div>
   </div>
@@ -20,18 +20,31 @@ import mock from '../mock'
 import IScroll from 'iscroll'
 
 export default {
-  data () {
-    return {
-      bill_array:mock.note_book_1.bill_array
-    }
-
-  },
-
+  props:{
+    'bill_array':{
+      type:Array
+    },
+    'select': {
+      type: Number,
+      default: 1
+    }},
   ready() {
-	  window.dateScroll = new IScroll('#wrapper', { eventPassthrough: true, scrollX: true, scrollY: false, preventDefault: false, snap: 'li' });
-   dateScroll.goToPage(10,0);
-   console.log(dateScroll)
+	  window.dateScroll = new IScroll('#wrapper', {
+      eventPassthrough: true, scrollX: true, scrollY: false, preventDefault: false, snap: 'li' });
+
+    document.getElementsByClassName("date-note-item")[2].classList.add("highlight")
+    bindEvent(this);
   }
+}
+
+function bindEvent(that){
+  dateScroll.on('beforeScrollStart', function(e){
+    document.getElementsByClassName("date-note-item")[that.select].classList.remove("highlight")
+  })
+  dateScroll.on('scrollEnd', function(e){
+    that.select = dateScroll.currentPage.pageX + 2
+    document.getElementsByClassName("date-note-item")[that.select].classList.add("highlight")
+  });
 }
 </script>
 
@@ -46,6 +59,7 @@ export default {
     overflow: hidden;
     -ms-touch-action: none;
   }
+
   #scroller {
     position: absolute;
     z-index: 1;
@@ -86,5 +100,9 @@ export default {
     font-size: 14px;
     overflow: hidden;
     text-align: center;
+  }
+
+  #scroller li.highlight {
+    background: #ccc;
   }
 </style>

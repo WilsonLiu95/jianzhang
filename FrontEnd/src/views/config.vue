@@ -6,7 +6,9 @@
     <div class="main-body">
       <mt-cell title="类别管理" href="/#!/noteType" is-link></mt-cell>
       <mt-cell title="账本管理" href="/#!/noteBook" is-link></mt-cell>
+
     </div>
+
   </div>
 
 </template>
@@ -34,6 +36,8 @@ export default {
 
   }
 }
+
+
 </script>
 <style>
   a {
