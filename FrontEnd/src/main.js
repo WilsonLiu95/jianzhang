@@ -4,6 +4,7 @@ import VueResource from 'vue-resource' // 用于发起请求并处理响应
 import routerConfig from './router'
 import App from './App.vue'
 import MintUI from 'mint-ui'
+import  './util'
 var VueTouch = require('vue-touch')
 
 import 'mint-ui/lib/style.css'

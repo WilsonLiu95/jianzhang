@@ -38,6 +38,9 @@ export default {
 }
 
 function bindEvent(that){
+  that.$watch("select", function(newVal, oldVal){
+    dateScroll.goToPage(newVal - 2 ,0, 100)
+  })
   dateScroll.on('beforeScrollStart', function(e){
     document.getElementsByClassName("date-note-item")[that.select].classList.remove("highlight")
   })

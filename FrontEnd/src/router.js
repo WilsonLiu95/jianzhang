@@ -15,6 +15,9 @@ export default function (router) {
     '/makenote': {
       component: require('_views/make-note.vue')
     },
+    '/test': {
+      component: require('_views/test.vue')
+    },
     // '/': {
     //   component: function (resolve) {
     //     // somehow retrieve your component definition from server...

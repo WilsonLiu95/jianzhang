@@ -25,167 +25,168 @@ var note_book_1 = {
   create_time: 2015,
   update_time: 2016,
   state: 0,
-  budget: "900", // 预算
+  budget: 900.00, // 预算
+  payout: 340.00,
+  income: 230.00,
   custom_conf: null,
+  record_num: 2,
   bill_array: [
     {
     date: 1,
-    payout: "30.20", // 开销
-    income: "5200.00", // 收入，发工资了
+    payout: 30.20, // 开销
+    income: 5200.00, // 收入，发工资了
     record_arr_idx: [1, 4, 6, 8, 10], // 存储 note_book_1.record_array 的索引
   }, {
       date: 2,
-      payout: "100.30", // 开销
-      income: "0.00", // 收入，发工资了
+      payout: 100.30, // 开销
+      income: 0.00, // 收入，发工资了
       record_arr_idx: [1, 4, 6, 8, 10], // 存储 note_book_1.record_array 的索引
     }, {
       date: 3,
-      payout: "100.30", // 开销
-      income: "0.00", // 收入，发工资了
+      payout: 100.30, // 开销
+      income: 0.00, // 收入，发工资了
       record_arr_idx: [1, 4, 6, 8, 10], // 存储 note_book_1.record_array 的索引
     }, {
       date: 4,
-      payout: "100.30", // 开销
-      income: "0.00", // 收入，发工资了
+      payout: 100.30, // 开销
+      income: 0.00, // 收入，发工资了
       record_arr_idx: [1, 4, 6, 8, 10], // 存储 note_book_1.record_array 的索引
     }, {
       date: 5,
-      payout: "100.30", // 开销
-      income: "0.00", // 收入，发工资了
+      payout: 100.30, // 开销
+      income: 0.00, // 收入，发工资了
       record_arr_idx: [1, 4, 6, 8, 10], // 存储 note_book_1.record_array 的索引
     }, {
       date: 6,
-      payout: "100.30", // 开销
-      income: "0.00", // 收入，发工资了
+      payout: 100.30, // 开销
+      income: 0.00, // 收入，发工资了
       record_arr_idx: [1, 4, 6, 8, 10], // 存储 note_book_1.record_array 的索引
     }, {
       date: 7,
-      payout: "100.30", // 开销
-      income: "0.00", // 收入，发工资了
+      payout: 100.30, // 开销
+      income: 0.00, // 收入，发工资了
       record_arr_idx: [1, 4, 6, 8, 10], // 存储 note_book_1.record_array 的索引
     }, {
       date: 8,
-      payout: "100.30", // 开销
-      income: "0.00", // 收入，发工资了
+      payout: 100.30, // 开销
+      income: 0.00, // 收入，发工资了
       record_arr_idx: [1, 4, 6, 8, 10], // 存储 note_book_1.record_array 的索引
     }, {
       date: 9,
-      payout: "100.30", // 开销
-      income: "0.00", // 收入，发工资了
+      payout: 100.30, // 开销
+      income: 0.00, // 收入，发工资了
       record_arr_idx: [1, 4, 6, 8, 10], // 存储 note_book_1.record_array 的索引
     }, {
       date: 10,
-      payout: "100.30", // 开销
-      income: "0.00", // 收入，发工资了
+      payout: 100.30, // 开销
+      income: 0.00, // 收入，发工资了
       record_arr_idx: [1, 4, 6, 8, 10], // 存储 note_book_1.record_array 的索引
     }, {
       date: 11,
-      payout: "100.30", // 开销
-      income: "0.00", // 收入，发工资了
+      payout: 100.30, // 开销
+      income: 0.00, // 收入，发工资了
       record_arr_idx: [1, 4, 6, 8, 10], // 存储 note_book_1.record_array 的索引
     }, {
       date: 12,
-      payout: "100.30", // 开销
-      income: "0.00", // 收入，发工资了
+      payout: 100.30, // 开销
+      income: 0.00, // 收入，发工资了
       record_arr_idx: [1, 4, 6, 8, 10], // 存储 note_book_1.record_array 的索引
     }, {
       date: 13,
-      payout: "100.30", // 开销
-      income: "0.00", // 收入，发工资了
+      payout: 100.30, // 开销
+      income: 0.00, // 收入，发工资了
       record_arr_idx: [1, 4, 6, 8, 10], // 存储 note_book_1.record_array 的索引
     }, {
       date: 14,
-      payout: "100.30", // 开销
-      income: "0.00", // 收入，发工资了
+      payout: 100.30, // 开销
+      income: 0.00, // 收入，发工资了
       record_arr_idx: [1, 4, 6, 8, 10], // 存储 note_book_1.record_array 的索引
     }, {
       date: 15,
-      payout: "100.30", // 开销
-      income: "0.00", // 收入，发工资了
+      payout: 100.30, // 开销
+      income: 0.00, // 收入，发工资了
       record_arr_idx: [1, 4, 6, 8, 10], // 存储 note_book_1.record_array 的索引
     }, {
       date: 16,
-      payout: "100.30", // 开销
-      income: "0.00", // 收入，发工资了
+      payout: 100.30, // 开销
+      income: 0.00, // 收入，发工资了
       record_arr_idx: [1, 4, 6, 8, 10], // 存储 note_book_1.record_array 的索引
     }, {
       date: 17,
-      payout: "100.30", // 开销
-      income: "0.00", // 收入，发工资了
+      payout: 100.30, // 开销
+      income: 0.00, // 收入，发工资了
       record_arr_idx: [1, 4, 6, 8, 10], // 存储 note_book_1.record_array 的索引
     }, {
       date: 18,
-      payout: "100.30", // 开销
-      income: "0.00", // 收入，发工资了
+      payout: 100.30, // 开销
+      income: 0.00, // 收入，发工资了
       record_arr_idx: [1, 4, 6, 8, 10], // 存储 note_book_1.record_array 的索引
     }, {
       date: 19,
-      payout: "100.30", // 开销
-      income: "0.00", // 收入，发工资了
+      payout: 100.30, // 开销
+      income: 0.00, // 收入，发工资了
       record_arr_idx: [1, 4, 6, 8, 10], // 存储 note_book_1.record_array 的索引
     }, {
       date: 20,
-      payout: "100.30", // 开销
-      income: "0.00", // 收入，发工资了
+      payout: 100.30, // 开销
+      income: 0.00, // 收入，发工资了
       record_arr_idx: [1, 4, 6, 8, 10], // 存储 note_book_1.record_array 的索引
     }, {
       date: 21,
-      payout: "100.30", // 开销
-      income: "0.00", // 收入，发工资了
+      payout: 100.30, // 开销
+      income: 0.00, // 收入，发工资了
       record_arr_idx: [1, 4, 6, 8, 10], // 存储 note_book_1.record_array 的索引
     }, {
       date: 22,
-      payout: "100.30", // 开销
-      income: "0.00", // 收入，发工资了
+      payout: 100.30, // 开销
+      income: 0.00, // 收入，发工资了
       record_arr_idx: [1, 4, 6, 8, 10], // 存储 note_book_1.record_array 的索引
     }, {
       date: 23,
-      payout: "100.30", // 开销
-      income: "0.00", // 收入，发工资了
+      payout: 100.30, // 开销
+      income: 0.00, // 收入，发工资了
       record_arr_idx: [1, 4, 6, 8, 10], // 存储 note_book_1.record_array 的索引
     }, {
       date: 24,
-      payout: "100.30", // 开销
-      income: "0.00", // 收入，发工资了
+      payout: 100.30, // 开销
+      income: 0.00, // 收入，发工资了
       record_arr_idx: [1, 4, 6, 8, 10], // 存储 note_book_1.record_array 的索引
     }, {
       date: 25,
-      payout: "100.30", // 开销
-      income: "0.00", // 收入，发工资了
+      payout: 100.30, // 开销
+      income: 0.00, // 收入，发工资了
       record_arr_idx: [1, 4, 6, 8, 10], // 存储 note_book_1.record_array 的索引
     }, {
       date: 26,
-      payout: "100.30", // 开销
-      income: "0.00", // 收入，发工资了
+      payout: 100.30, // 开销
+      income: 0.00, // 收入，发工资了
       record_arr_idx: [1, 4, 6, 8, 10], // 存储 note_book_1.record_array 的索引
     }, {
       date: 27,
-      payout: "100.30", // 开销
-      income: "0.00", // 收入，发工资了
+      payout: 100.30, // 开销
+      income: 0.00, // 收入，发工资了
       record_arr_idx: [1, 4, 6, 8, 10], // 存储 note_book_1.record_array 的索引
     }, {
       date: 28,
-      payout: "100.30", // 开销
-      income: "0.00", // 收入，发工资了
+      payout: 100.30, // 开销
+      income: 0.00, // 收入，发工资了
       record_arr_idx: [1, 4, 6, 8, 10], // 存储 note_book_1.record_array 的索引
     }, {
       date: 29,
-      payout: "100.30", // 开销
-      income: "0.00", // 收入，发工资了
+      payout: 100.30, // 开销
+      income: 0.00, // 收入，发工资了
       record_arr_idx: [1, 4, 6, 8, 10], // 存储 note_book_1.record_array 的索引
     }, {
       date: 30,
-      payout: "100.30", // 开销
-      income: "0.00", // 收入，发工资了
+      payout: 100.30, // 开销
+      income: 0.00, // 收入，发工资了
       record_arr_idx: [1, 4, 6, 8, 10], // 存储 note_book_1.record_array 的索引
     }, {
       date: 31,
-      payout: "100.30", // 开销
-      income: "0.00", // 收入，发工资了
+      payout: 100.30, // 开销
+      income: 0.00, // 收入，发工资了
       record_arr_idx: [1, 4, 6, 8, 10], // 存储 note_book_1.record_array 的索引
     }], // 1号-31号的账单数组
-
-  // record_array: [record_1, record_2, record_3],
 }
 
 //  用户数据   包含user于config两个表的数据

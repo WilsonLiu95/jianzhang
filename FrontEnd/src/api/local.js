@@ -46,5 +46,8 @@ var sync = {
     _set(key, val);
   }
 }
-
+window.user = user
+window.record = record
+window.noteBook = noteBook
+window.sync = sync
 export {user, record, noteBook, sync}

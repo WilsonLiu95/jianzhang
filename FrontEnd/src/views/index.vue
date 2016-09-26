@@ -2,10 +2,10 @@
   <div class="animated" transition="slide">
     <mt-header fixed title="当前账本:201609">
       <mt-button v-link="'/config'" icon="more" slot="left"></mt-button>
-      <mt-button v-link="'/makenote'" slot="right">+</mt-button>
+      <mt-button v-link="'/makenote?notebook=' + curr_notebook" slot="right">+</mt-button>
     </mt-header>
     <div class="main-body">
-      <date-note :bill_array="bill_array" :select.sync="select">
+      <date-note :bill_array="bill_array" :select.sync="select_date_idx">
       </date-note>
 
       <mt-loadmore :top-method="loadTop" :top-status.sync="topStatus">
@@ -35,13 +35,13 @@
 import dateNote from '_comp/date-note'
 import mock from '../mock'
 import {user, record, noteBook, sync} from '../api/local'
-record.set(mock.all_record)
 export default {
   data: function () {
     return {
       topStatus: "drop",
       bill_array: noteBook.get(1).bill_array,
-      select: 3,
+      select_date_idx: 3,
+      curr_notebook: 1,
     }
   },
   components: {
@@ -49,16 +49,19 @@ export default {
   },
   computed:{
     list: function(){
-      var arrIdx = this.bill_array[this.select].record_arr_idx
+      var arrIdx = this.bill_array[this.select_date_idx].record_arr_idx
       var arr = []
       var all_record = record.get()
+
       arrIdx.forEach(function(val, idx){
-        arr.push(all_record[val]);
+        arr.push(all_record[val-1]);
       })
       return arr
     }
   },
-
+  ready(){
+    getSearch().date ? this.$data.select_date_idx = Number(getSearch().date) - 1 : null
+  },
   methods: {
     swipeLeft: function (e) {
       if (e.target.parentElement.className.indexOf("note-card-item") === -1) return
@@ -72,15 +75,18 @@ export default {
 
     },
     loadTop: function(){
+      var that = this // 缓存Vue对象
       setTimeout(function () {
         this.topStatus = 'drop'
-        location.href = "./#!/makenote"
+
+        location.href = "./#!/makenote?notebook=" + that.$data.curr_notebook
       },100)
 
     }
 
   }
 }
+
 </script>
 <style>
   .note-card-item {
