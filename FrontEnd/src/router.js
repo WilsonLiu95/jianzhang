@@ -12,18 +12,12 @@ export default function (router) {
         require(['_views/config.vue'], resolve)
       }
     },
-    '/makenote': {
-      component: require('_views/make-note.vue')
+    '/record': {
+      component: require('_views/record.vue')
     },
     '/test': {
       component: require('_views/test.vue')
     },
-    // '/': {
-    //   component: function (resolve) {
-    //     // somehow retrieve your component definition from server...
-    //     require(['_views/make-note.vue'], resolve)
-    //   }
-    // },
     '404': {
       component: require('_views/not-found.vue')
     }

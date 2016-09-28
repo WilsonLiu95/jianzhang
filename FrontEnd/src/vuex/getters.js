@@ -5,8 +5,8 @@ export default {
 
       var arrIdx = state.notebook[current_notebook].bill_array[state.select_date - 1].record_arr_idx
       var arr = []
-      arrIdx.forEach(function(val, idx){
-        arr.push(state.record[val - 1]);
+      arrIdx.forEach(function(val){
+        arr.push(state.record[val]);
       })
       return arr
   },

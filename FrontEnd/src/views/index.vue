@@ -2,7 +2,7 @@
   <div class="animated" transition="slide">
     <mt-header fixed title="当前账本:201609">
       <mt-button v-link="'/config'" icon="more" slot="left"></mt-button>
-      <mt-button v-link="'/makenote?notebook=' + current_notebook" slot="right">+</mt-button>
+      <mt-button v-link="'/record'" slot="right">+</mt-button>
     </mt-header>
     <div class="main-body">
       <date-note :bill_array="bill_array" :select="select_date">
@@ -10,7 +10,8 @@
 
       <mt-loadmore :top-method="loadTop" :top-status.sync="topStatus">
         <ul class="note-card">
-          <li class="note-card-item" v-for="(index, item) in notelist" track-by="$index" v-if="item.state" v-touch:swipeleft="swipeLeft" v-touch:swiperight="swipeRight">
+          <li class="note-card-item" v-for="(index, item) in notelist" track-by="$index" v-if="item.state" v-touch:swipeleft="swipeLeft"
+            v-touch:swiperight="swipeRight" v-touch:tap="modifynote(index)">
             <div class="note-card-main">
               <span>{{item.custom_type}}</span>
               <span class="">{{item.record_type ==="支出" ? "-" : "+"}} {{item.money}}</span>
@@ -62,6 +63,8 @@ export default {
     if (select) {
       this.$store.dispatch("MODIFYSELECTDATE", {select: select})
     }
+    this.$store.dispatch("RECHECKNOTEBOOK")
+    debugger
   },
   methods: {
     swipeLeft: function (e) {
@@ -78,13 +81,18 @@ export default {
       var that = this // 缓存Vue对象
       setTimeout(function () {
         this.topStatus = 'drop'
-        location.href = "./#!/makenote"
+        location.href = "./#!/record"
       },100)
     },
     removeRecord: function(index){
       var option = {}
-      option.index = this.bill_array[index] // 修改具体哪条
+      var idx = this.bill_array[this.select_date - 1].record_arr_idx[index]
+      option.index = idx
       this.$store.dispatch("REMOVERECORD", option)
+     },
+     modifynote: function(index){
+       var idx = this.bill_array[this.select_date - 1].record_arr_idx[index]
+       location.href = "./#!/record?index=" + idx
      }
   }
 }
@@ -124,7 +132,9 @@ export default {
     -o-animation: swiperight 0.5s forwards;
     /* Opera */
   }
-
+  .note-card {
+    min-height: 400px;
+  }
   .note-card-item div {
     display: inline-block;
     height: 40px;

@@ -13,7 +13,7 @@
           <checker-item v-for="item in user.custom_type_conf" :value="$index">{{item.custom_type}}</checker-item>
         </checker>
         <divider></divider>
-        <mt-button type="primary" size="large" @click="makeNote">确认</mt-button>
+        <mt-button type="primary" size="large" @click="submit">确认</mt-button>
       </group>
     </div>
   </div>
@@ -46,33 +46,64 @@ export default {
     XInput,
     Divider
   },
+  ready(){
+    var index = getSearch().index
+    var that = this
+    if (index) {
+      var rd = this.$store.state.record[index]
+      var custom_type = this.$store.state.user.custom_type_conf
+      custom_type.forEach(function(val,idx){
+        if(val.custom_type === rd.custom_type){
+          that.custom_type_idx = idx
+        }
+      })
+      // 为修改
+      this.date = rd.date
+      this.remark = rd.comment
+      this.money = String(rd.money)
+    }
+  },
   methods: {
-    makeNote: function(){
+    submit: function(){
       // 获取基本信息
       var all_record = this.$store.state.record
       var current_notebook = this.current_notebook
       var notebook = this.$store.state.notebook[current_notebook]
 
       var type = this.user.custom_type_conf[this.$data.custom_type_idx]
-
-      // 构建record
-      var newRecord = {
-        note_book_id: current_notebook,
-        user_seq_num: all_record.length,
-        record_seq_num: notebook.record_num + 1,
-        create_time: new Date(),
-        update_time: "",
-        date: this.$data.date, // 日期
-        day_of_week: new Date(this.$data.date).getDay(), // 周几
-        state: 1,
-        account_type: "现金",
-        record_type: type.record_type,
-        custom_type: type.custom_type,
-        comment: this.$data.remark,
-        money: Number(this.$data.money)
+      var index = getSearch().index
+      if (index) {
+        // 存在则为更改
+        var newRecord = {
+          date: this.date,
+          update_time: new Date(),
+          record_type: this.record_type,
+          custom_type: this.custom_type,
+          comment: this.remark,
+          money: Number(this.money)
+        }
+        // 调用VUEX的action来分发
+        this.modifynote(newRecord, index)
+      } else {
+        // 构建record
+        var newRecord = {
+          note_book_id: current_notebook,
+          user_seq_num: all_record.length,
+          record_seq_num: notebook.record_num + 1,
+          create_time: new Date(),
+          update_time: "",
+          date: this.$data.date, // 日期
+          day_of_week: new Date(this.$data.date).getDay(), // 周几
+          state: 1,
+          account_type: "现金",
+          record_type: type.record_type,
+          custom_type: type.custom_type,
+          comment: this.$data.remark,
+          money: Number(this.$data.money)
+        }
+        // 调用VUEX的action来分发mutations
+        this.makenote(newRecord)
       }
-      // 调用VUEX的action来分发mutations
-      this.makenote(newRecord)
       // 重定向到主页
       location.href = "./#!/index"
     }

@@ -4,8 +4,9 @@ export default function localStoragePlugin(store) {
   store.subscribe((mutation, state) => {
     if (['ADDRECORD', "MODIFYRECORD", "REMOVERECORD"].indexOf(mutation.type) !== -1) {
       localStorage.setItem(types.RECORD, JSON.stringify(state.record))
+      localStorage.setItem(types.NOTEBOOK, JSON.stringify(state.notebook))
     }
-    if (['ADDNOTEBOOK', 'ADDRECORD', "MODIFYNOTEBOOK"].indexOf(mutation.type) !== -1) {
+    if (['ADDNOTEBOOK', "MODIFYNOTEBOOK", "RECHECKNOTEBOOK" ].indexOf(mutation.type) !== -1) {
       localStorage.setItem(types.NOTEBOOK, JSON.stringify(state.notebook))
     }
     if (['USER'].indexOf(mutation.type) !== -1) {
