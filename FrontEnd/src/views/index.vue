@@ -11,7 +11,7 @@
       <mt-loadmore :top-method="loadTop" :top-status.sync="topStatus">
         <ul class="note-card">
           <li class="note-card-item" v-for="(index, item) in notelist" track-by="$index" v-if="item.state" v-touch:swipeleft="swipeLeft"
-            v-touch:swiperight="swipeRight" v-touch:tap="modifynote(index)">
+            v-touch:swiperight="swipeRight" v-touch:tap="modifyNote(index)">
             <div class="note-card-main">
               <span>{{item.custom_type}}</span>
               <span class="">{{item.record_type ==="支出" ? "-" : "+"}} {{item.money}}</span>
@@ -63,8 +63,6 @@ export default {
     if (select) {
       this.$store.dispatch("MODIFYSELECTDATE", {select: select})
     }
-    this.$store.dispatch("RECHECKNOTEBOOK")
-    debugger
   },
   methods: {
     swipeLeft: function (e) {
@@ -90,7 +88,7 @@ export default {
       option.index = idx
       this.$store.dispatch("REMOVERECORD", option)
      },
-     modifynote: function(index){
+     modifyNote: function(index){
        var idx = this.bill_array[this.select_date - 1].record_arr_idx[index]
        location.href = "./#!/record?index=" + idx
      }

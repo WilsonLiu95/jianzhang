@@ -71,8 +71,9 @@ export default {
       var notebook = this.$store.state.notebook[current_notebook]
 
       var type = this.user.custom_type_conf[this.$data.custom_type_idx]
-      var index = getSearch().index
+      var index = Number(getSearch().index)
       if (index) {
+
         // 存在则为更改
         var newRecord = {
           date: this.date,
@@ -84,6 +85,7 @@ export default {
         }
         // 调用VUEX的action来分发
         this.modifynote(newRecord, index)
+
       } else {
         // 构建record
         var newRecord = {

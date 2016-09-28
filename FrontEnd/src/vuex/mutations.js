@@ -10,24 +10,14 @@ export const state = {
 }
 
 export const mutations = {
-  // all_record
+  //=======================================record操作部分=================================================
   ADDRECORD(state, option) {
-
     // 直接压入
     state.record.push(option.record)
-
     // 将对应的Notebook中更新
     var nb = state.notebook[state.current_notebook]
     nb.record_num++
     nb.bill_array[state.select_date - 1].record_arr_idx.push(option.record.user_seq_num)
-
-    if (option.record.record_type === "支出") {
-      nb.bill_array[state.select_date - 1].payout += option.record.money // 修改当天总支出
-      nb.payout += option.record.money
-    } else {
-      nb.bill_array[state.select_date - 1].income += option.record.money
-      nb.income += option.record.money
-    }
   },
   MODIFYRECORD(state, option) {
     // 直接覆盖对应的record
@@ -38,23 +28,29 @@ export const mutations = {
     var rd = state.record[option.index]
     var nb = state.notebook[state.current_notebook]
     rd.state = 0
-    if (rd.record_type === "支出") {
-      nb.bill_array[state.select_date - 1].payout -= rd.money
-      nb.payout -= rd.money
-    } else {
-      nb.bill_array[state.select_date - 1].income -= rd.money
-      nb.income -= rd.money
-    }
   },
-  // notebook
+  //=======================================notebook操作部分=================================================
+  // 添加账本
   ADDNOTEBOOK(state, option) {
     state.notebook.push(option.notebook)
   },
+  // 修改账本配置
   MODIFYNOTEBOOK(state, option) {
     state.notebook[option.index] = option.notebook
   },
+  MOVERECORD(state, option) {
+    var nb = state.notebook[state.current_notebook]
+    var arr = nb.bill_array[option.olddate - 1].record_arr_idx
+    var start = arr.indexOf(option.index)
+    if (start == -1){
+
+    }
+    arr.splice(start, 1)
+    nb.bill_array[option.newdate - 1].record_arr_idx.push(option.index)
+  },
+  // 重新校验收支
   RECHECKNOTEBOOK(state, option) {
-    // 重新校验收支
+
     var nb = state.notebook[state.current_notebook]
     var bill_array = nb.bill_array
     var len = bill_array.length
@@ -85,10 +81,12 @@ export const mutations = {
       })
     }
   },
-  // USER
+  //=======================================USER操作部分=================================================
   USER(state, option) {
     state.user = option.user
   },
+
+  //=======================================SYNC操作部分=================================================
   // SYNC 待定
   ADDSYNC(state, option) {
 
@@ -96,12 +94,13 @@ export const mutations = {
   MODIFYSYNC(state, option) {
 
   },
+  //=======================================current_book操作部分=================================================
   MODIFYCURRENTNOTEBOOK(state, option) {
     state.current_notebook = option.select
   },
+  //=======================================select_date操作部分=================================================
   MODIFYSELECTDATE(state, option) {
     state.select_date = option.select
   }
-
 
 }

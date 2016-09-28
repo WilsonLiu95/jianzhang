@@ -6,7 +6,7 @@ export default function localStoragePlugin(store) {
       localStorage.setItem(types.RECORD, JSON.stringify(state.record))
       localStorage.setItem(types.NOTEBOOK, JSON.stringify(state.notebook))
     }
-    if (['ADDNOTEBOOK', "MODIFYNOTEBOOK", "RECHECKNOTEBOOK" ].indexOf(mutation.type) !== -1) {
+    if (['ADDNOTEBOOK', "MODIFYNOTEBOOK", "RECHECKNOTEBOOK","MOVERECORD" ].indexOf(mutation.type) !== -1) {
       localStorage.setItem(types.NOTEBOOK, JSON.stringify(state.notebook))
     }
     if (['USER'].indexOf(mutation.type) !== -1) {
