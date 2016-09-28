@@ -10,7 +10,7 @@
 
       <mt-loadmore :top-method="loadTop" :top-status.sync="topStatus">
         <ul class="note-card">
-          <li class="note-card-item" v-for="(index, item) in notelist" v-if="item.state" v-touch:swipeleft="swipeLeft" v-touch:swiperight="swipeRight">
+          <li class="note-card-item" v-for="(index, item) in notelist" track-by="$index" v-if="item.state" v-touch:swipeleft="swipeLeft" v-touch:swiperight="swipeRight">
             <div class="note-card-main">
               <span>{{item.custom_type}}</span>
               <span class="">{{item.record_type ==="支出" ? "-" : "+"}} {{item.money}}</span>
@@ -33,8 +33,10 @@
 </template>
 <script>
 import dateNote from '_comp/date-note'
-import mock from '../mock'
 import getters from '_vuex/getters'
+import actions from '_vuex/actions'
+
+import mock from '../mock'
 import {user, record, noteBook, sync} from '../api/local'
     localStorage.all_record ? null : record.set(mock.all_record)
     localStorage.user ? null : user.set(mock.user)
@@ -52,7 +54,8 @@ export default {
     'date-note': dateNote
   },
   vuex: {
-    getters: getters
+    getters,
+    actions
   },
   ready(){
     var select = getSearch().date ? Number(getSearch().date) - 1 : null
@@ -80,10 +83,8 @@ export default {
     },
     removeRecord: function(index){
       var option = {}
-      option.record = this.notelist[index] // 修改状态，变为删除
       option.index = this.bill_array[index] // 修改具体哪条
-      option.record.state = 0
-      this.$store.dispatch("MODIFYRECORD", option)
+      this.$store.dispatch("REMOVERECORD", option)
      }
   }
 }

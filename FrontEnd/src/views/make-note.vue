@@ -10,7 +10,7 @@
         <x-input title="备注" placeholder="大出血" :value.sync="remark"></x-input>
         <x-input title="金额" placeholder="10.20" keyboard="number" :value.sync="money"></x-input>
         <checker :value.sync="custom_type_idx" default-item-class="demo1-item" selected-item-class="demo1-item-selected">
-          <checker-item v-for="item in custom_type_conf" :value="$index">{{item.custom_type}}</checker-item>
+          <checker-item v-for="item in user.custom_type_conf" :value="$index">{{item.custom_type}}</checker-item>
         </checker>
         <divider></divider>
         <mt-button type="primary" size="large" @click="makeNote">确认</mt-button>
@@ -20,22 +20,23 @@
 </template>
 <script>
 import { Group,Calendar,Checker, CheckerItem, XInput, Divider} from 'vux/src/components'
-import {user, record, noteBook, sync} from '../api/local'
 import getters from '_vuex/getters'
+import actions from '_vuex/actions'
 export default {
   data: function () {
     return {
       date: 'TODAY',
       custom_type_idx: 0,
       remark:"标注",
-      money: "10.30",
-      custom_type_conf: user.get().custom_type_conf
+      money: "10.30"
     }
   },
   vuex: {
     getters: {
-      current_notebook: getters.current_notebook
-    }
+      current_notebook: getters.current_notebook,
+      user: getters.user
+    },
+    actions
   },
   components: {
     Calendar,
@@ -45,18 +46,16 @@ export default {
     XInput,
     Divider
   },
-  computed:{
-
-  },
-
   methods: {
     makeNote: function(){
+      // 获取基本信息
       var all_record = this.$store.state.record
       var current_notebook = this.current_notebook
       var notebook = this.$store.state.notebook[current_notebook]
-      var type = this.$data.custom_type_conf[this.$data.custom_type_idx]
 
-      // 新建新的record
+      var type = this.user.custom_type_conf[this.$data.custom_type_idx]
+
+      // 构建record
       var newRecord = {
         note_book_id: current_notebook,
         user_seq_num: all_record.length,
@@ -65,29 +64,17 @@ export default {
         update_time: "",
         date: this.$data.date, // 日期
         day_of_week: new Date(this.$data.date).getDay(), // 周几
-        state: 0,
+        state: 1,
         account_type: "现金",
         record_type: type.record_type,
         custom_type: type.custom_type,
         comment: this.$data.remark,
-        money: parseInt(this.$data.money, 10),
+        money: Number(this.$data.money)
       }
-      this.$store.dispatch("ADDRECORD", {record: newRecord})
-
-      // 对notebook 进行修改
-      notebook.record_num++ // 压入了一个记录
-
-      var dateIdx = new Date(this.$data.date).getDate() - 1
-      notebook.bill_array[dateIdx].record_arr_idx.push(newRecord.user_seq_num)
-      if (newRecord.record_type === "支出"){
-        notebook.bill_array[dateIdx].payout +=  newRecord.money // 修改当天总支出
-        notebook.payout +=  newRecord.money
-      } else {
-        notebook.bill_array[dateIdx].income += newRecord.money
-        notebook.income +=  newRecord.money
-      }
-      noteBook.set(note_book_id, notebook) // 压入存储中
-      location.href = "./#!/index?date=" + (dateIdx+1)
+      // 调用VUEX的action来分发mutations
+      this.makenote(newRecord)
+      // 重定向到主页
+      location.href = "./#!/index"
     }
   }
 }

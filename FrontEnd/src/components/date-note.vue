@@ -32,22 +32,22 @@ export default {
 	  window.dateScroll = new IScroll('#wrapper', {
       eventPassthrough: true, scrollX: true, scrollY: false, preventDefault: false, snap: 'li' });
 
-    document.getElementsByClassName("date-note-item")[2].classList.add("highlight")
+    dateScroll.goToPage(this.select - 3, 0, 100)
     bindEvent(this);
   }
 }
 
 function bindEvent(that){
   that.$watch("select", function(newVal, oldVal){
-    dateScroll.goToPage(newVal - 2 ,0, 100)
+    dateScroll.goToPage(newVal - 3 ,0, 100)
   })
   dateScroll.on('beforeScrollStart', function(e){
-    document.getElementsByClassName("date-note-item")[that.select].classList.remove("highlight")
+    document.getElementsByClassName("date-note-item")[that.select -1].classList.remove("highlight")
   })
   dateScroll.on('scrollEnd', function(e){
-    that.select = dateScroll.currentPage.pageX + 2
+    that.select = dateScroll.currentPage.pageX + 3
     that.$store.dispatch("MODIFYSELECTDATE", {select: that.select})
-    document.getElementsByClassName("date-note-item")[that.select].classList.add("highlight")
+    document.getElementsByClassName("date-note-item")[that.select - 1].classList.add("highlight")
   });
 }
 </script>

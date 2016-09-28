@@ -2,16 +2,21 @@ import types from "./types"
 
 export default function localStoragePlugin(store) {
   store.subscribe((mutation, state) => {
-    if (['ADDRECORD', "MODIFYRECORD"].indexOf(mutation.type)) {
+    if (['ADDRECORD', "MODIFYRECORD", "REMOVERECORD"].indexOf(mutation.type) !== -1) {
       localStorage.setItem(types.RECORD, JSON.stringify(state.record))
-    } else if (['ADDNOTEBOOK', "MODIFYNOTEBOOK"].indexOf(mutation.type)) {
+    }
+    if (['ADDNOTEBOOK', 'ADDRECORD', "MODIFYNOTEBOOK"].indexOf(mutation.type) !== -1) {
       localStorage.setItem(types.NOTEBOOK, JSON.stringify(state.notebook))
-    } else if (['USER'].indexOf(mutation.type)) {
+    }
+    if (['USER'].indexOf(mutation.type) !== -1) {
       localStorage.setItem(types.USER, JSON.stringify(state.user))
-    } else if ("MODIFYCURRENTNOTEBOOK" === mutation.type) {
+    }
+    if ("MODIFYCURRENTNOTEBOOK" === mutation.type !== -1) {
       localStorage.setItem(types.CURRENTNOTEBOOK, JSON.stringify(state.current_notebook))
-    } else if ("MODIFYSELECTDATE" === mutation.type) {
+    }
+    if ("MODIFYSELECTDATE" === mutation.type !== -1) {
       localStorage.setItem(types.SELECTDATE, JSON.stringify(state.select_date))
     }
+
   })
 }

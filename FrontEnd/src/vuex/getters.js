@@ -2,7 +2,8 @@ export default {
   notelist: function (state){
       var current_notebook = state.current_notebook
       // 选择当前账本 当前选择日期的记录数组
-      var arrIdx = state.notebook[current_notebook].bill_array[state.select_date].record_arr_idx
+
+      var arrIdx = state.notebook[current_notebook].bill_array[state.select_date - 1].record_arr_idx
       var arr = []
       arrIdx.forEach(function(val, idx){
         arr.push(state.record[val - 1]);
@@ -18,5 +19,8 @@ export default {
   },
   select_date: function(state){
     return state.select_date
+  },
+  user: function(state){
+    return state.user
   }
 }
