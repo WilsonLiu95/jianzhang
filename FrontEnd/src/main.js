@@ -4,6 +4,7 @@ import VueResource from 'vue-resource' // 用于发起请求并处理响应
 import routerConfig from './router'
 import App from './App.vue'
 import MintUI from 'mint-ui'
+import Vuex from 'vuex'
 import  './util'
 var VueTouch = require('vue-touch')
 
@@ -14,6 +15,7 @@ Vue.use(VueRouter)
 Vue.use(VueResource)
 Vue.use(VueTouch)
 Vue.use(MintUI)
+Vue.use(Vuex)
 
 // ======================配置路由===============================
 var router = new VueRouter()

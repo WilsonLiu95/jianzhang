@@ -46,8 +46,29 @@ var sync = {
     _set(key, val);
   }
 }
+function reCheckDate(note_book_key, dateIdx){
+  var nb = noteBook.get(note_book_key)
+  var all_record = record.get()
+
+  var bill = nb.bill_array[dateIdx]
+  bill.payout = 0
+  bill.income = 0
+  var bill_arr = bill.record_arr_idx
+  bill_arr.forEach(function(val, idx){
+    var _record = all_record[val - 1]
+    debugger
+    if(_record.record_type == "支出"){
+      bill.payout += _record.money
+    } else {
+      bill.income += _record.money
+    }
+  })
+  nb.bill_array[dateIdx] = bill
+  noteBook.set(note_book_key, nb)
+}
 window.user = user
 window.record = record
 window.noteBook = noteBook
 window.sync = sync
+window.reCheckDate = reCheckDate
 export {user, record, noteBook, sync}

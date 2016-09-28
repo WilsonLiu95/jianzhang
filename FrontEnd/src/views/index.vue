@@ -10,13 +10,13 @@
 
       <mt-loadmore :top-method="loadTop" :top-status.sync="topStatus">
         <ul class="note-card">
-          <li class="note-card-item" v-for="(index, item) in list" v-touch:swipeleft="swipeLeft" v-touch:swiperight="swipeRight">
+          <li class="note-card-item" v-for="(index, item) in list"  v-if="item.state" v-touch:swipeleft="swipeLeft" v-touch:swiperight="swipeRight">
             <div class="note-card-main">
               <span>{{item.custom_type}}</span>
               <span class="">{{item.record_type ==="支出" ? "-" : "+"}} {{item.money}}</span>
             </div>
             <div class="note-card-right">
-              <span>删除</span>
+              <span v-touch:tap="removeRecord(index)">删除</span>
             </div>
 
           </li>
@@ -35,6 +35,9 @@
 import dateNote from '_comp/date-note'
 import mock from '../mock'
 import {user, record, noteBook, sync} from '../api/local'
+    localStorage.all_record ? null : record.set(mock.all_record)
+    localStorage.user ? null : user.set(mock.user)
+    localStorage.note_book_1 ? null : noteBook.set(1, mock.note_book_1)
 export default {
   data: function () {
     return {
@@ -42,6 +45,7 @@ export default {
       bill_array: noteBook.get(1).bill_array,
       select_date_idx: 3,
       curr_notebook: 1,
+      isReload: 0
     }
   },
   components: {
@@ -49,6 +53,8 @@ export default {
   },
   computed:{
     list: function(){
+      console.log(this.isReload)
+
       var arrIdx = this.bill_array[this.select_date_idx].record_arr_idx
       var arr = []
       var all_record = record.get()
@@ -61,6 +67,9 @@ export default {
   },
   ready(){
     getSearch().date ? this.$data.select_date_idx = Number(getSearch().date) - 1 : null
+    // this.$watch("isReload", function(){
+    //   this.list
+    // })
   },
   methods: {
     swipeLeft: function (e) {
@@ -72,15 +81,20 @@ export default {
       if (e.target.parentElement.className.indexOf("note-card-item") === -1) return
       e.target.parentElement.classList.remove("swipeleft")
       e.target.parentElement.classList.add("swiperight")
-
     },
     loadTop: function(){
       var that = this // 缓存Vue对象
       setTimeout(function () {
         this.topStatus = 'drop'
-
         location.href = "./#!/makenote?notebook=" + that.$data.curr_notebook
       },100)
+    },
+    removeRecord: function(index){
+      var arrIdx = this.bill_array[this.select_date_idx].record_arr_idx
+      var all_record = record.get()
+      all_record[arrIdx[index] - 1].state = 0
+      this.isReload++
+      record.set(all_record)
 
     }
 
@@ -93,72 +107,115 @@ export default {
     background-color: #fff;
     font-size: 16px;
     line-height: 1;
-    height:40px;
+    height: 40px;
     position: relative;
     border-top: 1px solid #ccc;
-    width:120%;
+    width: 120%;
   }
+
   li {
     list-style: none;
   }
+
   .swipeleft {
-    animation:swipeleft 0.5s forwards;
-    -moz-animation:swipeleft 0.5s forwards; /* Firefox */
-    -webkit-animation:swipeleft 0.5s forwards; /* Safari and Chrome */
-    -o-animation:swipeleft 0.5s forwards; /* Opera */
+    animation: swipeleft 0.5s forwards;
+    -moz-animation: swipeleft 0.5s forwards;
+    /* Firefox */
+    -webkit-animation: swipeleft 0.5s forwards;
+    /* Safari and Chrome */
+    -o-animation: swipeleft 0.5s forwards;
+    /* Opera */
   }
+
   .swiperight {
-    animation:swiperight 0.5s forwards;
-    -moz-animation:swiperight 0.5s forwards; /* Firefox */
-    -webkit-animation:swiperight 0.5s forwards; /* Safari and Chrome */
-    -o-animation:swiperight 0.5s forwards; /* Opera */
+    animation: swiperight 0.5s forwards;
+    -moz-animation: swiperight 0.5s forwards;
+    /* Firefox */
+    -webkit-animation: swiperight 0.5s forwards;
+    /* Safari and Chrome */
+    -o-animation: swiperight 0.5s forwards;
+    /* Opera */
   }
+
   .note-card-item div {
     display: inline-block;
-    height:40px;
+    height: 40px;
   }
+
   .note-card-main {
     float: left;
-    width:83.33%;
+    width: 83.33%;
   }
+
   .note-card-right {
     float: left;
-    width:16%;
+    width: 16%;
     background-color: red;
   }
 
-  @keyframes swipeleft
-  {
-    from {margin-left: 0}
-    to {margin-left: -60px}
+  @keyframes swipeleft {
+    from {
+      margin-left: 0
+    }
+    to {
+      margin-left: -60px
+    }
   }
 
-  @-moz-keyframes swipeleft /* Firefox */
+  @-moz-keyframes swipeleft
+  /* Firefox */
+
   {
-    from {margin-left: 0}
-    to {margin-left: -60px}
+    from {
+      margin-left: 0
+    }
+    to {
+      margin-left: -60px
+    }
   }
 
-  @-webkit-keyframes swipeleft /* Safari 和 Chrome */
+  @-webkit-keyframes swipeleft
+  /* Safari 和 Chrome */
+
   {
-    from {margin-left: 0}
-    to {margin-left: -60px}
-  }
-  @keyframes swiperight
-  {
-    from {margin-left: -60px}
-    to {margin-left: 0px}
-  }
-  @-moz-keyframes swiperight /* Firefox */
-  {
-    from {margin-left: -60px}
-    to {margin-left: 0px}
+    from {
+      margin-left: 0
+    }
+    to {
+      margin-left: -60px
+    }
   }
 
-  @-webkit-keyframes swiperight /* Safari 和 Chrome */
-  {
-    from {margin-left: -60px}
-    to {margin-left: 0px}
+  @keyframes swiperight {
+    from {
+      margin-left: -60px
+    }
+    to {
+      margin-left: 0px
+    }
   }
 
+  @-moz-keyframes swiperight
+  /* Firefox */
+
+  {
+    from {
+      margin-left: -60px
+    }
+    to {
+      margin-left: 0px
+    }
+  }
+
+  @-webkit-keyframes swiperight
+  /* Safari 和 Chrome */
+
+  {
+    from {
+      margin-left: -60px
+    }
+    to {
+      margin-left: 0px
+    }
+  }
 </style>

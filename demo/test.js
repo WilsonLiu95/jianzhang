@@ -2,26 +2,7 @@
  * Created by wilson on 16/9/7.
  */
 
-function AppCacheListen() {
-    var appCache = window.applicationCache;
-    window.addEventListener('load', function (e) {
-        appCache.addEventListener('updateready', function (e) {
-            if (appCache.status == appCache.UPDATEREADY) {
-                // Browser downloaded a new app cache.
-                // Swap it in and reload the page to get the new hotness.
-                appCache.swapCache();
-                if (confirm('有新版本，确定重新加载?')) {
-                    window.location.reload();
-                }
-            } else {
-                // Manifest didn’t changed. Nothing new to server.
-                console.log("manifest didn\'t change");
-            }
-        }, false);
-    }, false);
 
-}
-AppCacheListen();
 
 
 var dateArray = document.querySelector("#scroller ul");

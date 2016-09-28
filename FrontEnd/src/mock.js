@@ -224,6 +224,6 @@ var user = {
 }
 export default {
   all_record:all_record,
-  note_book_1: note_book_1,
+  note_book: [note_book_1],
   user: user
 }
