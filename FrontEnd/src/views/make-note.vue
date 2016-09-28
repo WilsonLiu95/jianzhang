@@ -21,7 +21,7 @@
 <script>
 import { Group,Calendar,Checker, CheckerItem, XInput, Divider} from 'vux/src/components'
 import {user, record, noteBook, sync} from '../api/local'
-
+import getters from '_vuex/getters'
 export default {
   data: function () {
     return {
@@ -30,6 +30,11 @@ export default {
       remark:"标注",
       money: "10.30",
       custom_type_conf: user.get().custom_type_conf
+    }
+  },
+  vuex: {
+    getters: {
+      current_notebook: getters.current_notebook
     }
   },
   components: {
@@ -46,17 +51,16 @@ export default {
 
   methods: {
     makeNote: function(){
-      var all_record = record.get()
-      var note_book_id = getSearch().notebook
-      var notebook = noteBook.get(note_book_id)
-
+      var all_record = this.$store.state.record
+      var current_notebook = this.current_notebook
+      var notebook = this.$store.state.notebook[current_notebook]
       var type = this.$data.custom_type_conf[this.$data.custom_type_idx]
 
       // 新建新的record
       var newRecord = {
-        note_book_id: note_book_id,
-        user_seq_num: all_record.length + 1, // 序号统一为数组index + 1,按照正常的逻辑从1开始而非0
-        record_seq_num: notebook.record_num + 1, // 该账本的第几条数据，不可修改字段
+        note_book_id: current_notebook,
+        user_seq_num: all_record.length,
+        record_seq_num: notebook.record_num + 1,
         create_time: new Date(),
         update_time: "",
         date: this.$data.date, // 日期
@@ -68,18 +72,17 @@ export default {
         comment: this.$data.remark,
         money: parseInt(this.$data.money, 10),
       }
-      all_record.push(newRecord);
-      record.set(all_record) // 压入all_record中
+      this.$store.dispatch("ADDRECORD", {record: newRecord})
 
       // 对notebook 进行修改
       notebook.record_num++ // 压入了一个记录
+
       var dateIdx = new Date(this.$data.date).getDate() - 1
       notebook.bill_array[dateIdx].record_arr_idx.push(newRecord.user_seq_num)
       if (newRecord.record_type === "支出"){
         notebook.bill_array[dateIdx].payout +=  newRecord.money // 修改当天总支出
         notebook.payout +=  newRecord.money
       } else {
-        debugger
         notebook.bill_array[dateIdx].income += newRecord.money
         notebook.income +=  newRecord.money
       }

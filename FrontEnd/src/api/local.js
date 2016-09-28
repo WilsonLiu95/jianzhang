@@ -31,8 +31,8 @@ var noteBook = {
   get: function (key) {
     return _get('note_book_' + key);
   },
-  set: function (key, val) {
-    _set("note_book_" + key, val);
+  set: function (val) {
+    _set("note_book", val);
   }
 }
 

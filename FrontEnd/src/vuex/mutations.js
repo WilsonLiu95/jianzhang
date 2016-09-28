@@ -1,15 +1,12 @@
-// state
-const USER = 'user'
-const RECORD = 'all_record'
-const NOTEBOOK = 'noteBook'
-const SYNC = 'sync'
-
+import types from "./types"
 
 export const state = {
-  user: JSON.parse(window.localStorage.getItem(USER) || '{}'),
-  record: JSON.parse(window.localStorage.getItem(RECORD) || '[]'),
-  notebook: JSON.parse(window.localStorage.getItem(USER) || '[]'),
-  sync: JSON.parse(window.localStorage.getItem(SYNC) || '[]'),
+  user: JSON.parse(window.localStorage.getItem(types.USER) || '{}'),
+  record: JSON.parse(window.localStorage.getItem(types.RECORD) || '[]'),
+  notebook: JSON.parse(window.localStorage.getItem(types.NOTEBOOK) || '[]'),
+  sync: JSON.parse(window.localStorage.getItem(types.SYNC) || '{}'),
+  current_notebook: JSON.parse(window.localStorage.getItem(types.CURRENTNOTEBOOK) || '0'),
+  select_date: JSON.parse(window.localStorage.getItem(types.SELECTDATE) || '3'),
 }
 
 export const mutations = {
@@ -27,17 +24,25 @@ export const mutations = {
     state.notebook.push(option.notebook)
   },
   MODIFYNOTEBOOK (state, option){
-    state.notebook[option.idx] = option.notebook
+    state.notebook[option.index] = option.notebook
   },
   // USER
   USER (state, option){
     state.user = option.user
   },
-  // SYNC
+  // SYNC 待定
   ADDSYNC (state, option){
 
   },
   MODIFYSYNC (state, option){
 
+  },
+  MODIFYCURRENTNOTEBOOK (state, option){
+    state.current_notebook = option.select
+  },
+  MODIFYSELECTDATE (state, option){
+    state.select_date = option.select
   }
+
+
 }

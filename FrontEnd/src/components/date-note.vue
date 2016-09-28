@@ -46,6 +46,7 @@ function bindEvent(that){
   })
   dateScroll.on('scrollEnd', function(e){
     that.select = dateScroll.currentPage.pageX + 2
+    that.$store.dispatch("MODIFYSELECTDATE", {select: that.select})
     document.getElementsByClassName("date-note-item")[that.select].classList.add("highlight")
   });
 }

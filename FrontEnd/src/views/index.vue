@@ -2,15 +2,15 @@
   <div class="animated" transition="slide">
     <mt-header fixed title="当前账本:201609">
       <mt-button v-link="'/config'" icon="more" slot="left"></mt-button>
-      <mt-button v-link="'/makenote?notebook=' + curr_notebook" slot="right">+</mt-button>
+      <mt-button v-link="'/makenote?notebook=' + current_notebook" slot="right">+</mt-button>
     </mt-header>
     <div class="main-body">
-      <date-note :bill_array="bill_array" :select.sync="select_date_idx">
+      <date-note :bill_array="bill_array" :select="select_date">
       </date-note>
 
       <mt-loadmore :top-method="loadTop" :top-status.sync="topStatus">
         <ul class="note-card">
-          <li class="note-card-item" v-for="(index, item) in list"  v-if="item.state" v-touch:swipeleft="swipeLeft" v-touch:swiperight="swipeRight">
+          <li class="note-card-item" v-for="(index, item) in notelist" v-if="item.state" v-touch:swipeleft="swipeLeft" v-touch:swiperight="swipeRight">
             <div class="note-card-main">
               <span>{{item.custom_type}}</span>
               <span class="">{{item.record_type ==="支出" ? "-" : "+"}} {{item.money}}</span>
@@ -34,42 +34,31 @@
 <script>
 import dateNote from '_comp/date-note'
 import mock from '../mock'
+import getters from '_vuex/getters'
 import {user, record, noteBook, sync} from '../api/local'
     localStorage.all_record ? null : record.set(mock.all_record)
     localStorage.user ? null : user.set(mock.user)
-    localStorage.note_book_1 ? null : noteBook.set(1, mock.note_book_1)
+    localStorage.note_book ? null : noteBook.set(mock.note_book)
+    localStorage.current_notebook ? null : localStorage.setItem("current_notebook", 0)
+    localStorage.select_date ? null : localStorage.setItem("select_date", 12)
+
 export default {
   data: function () {
     return {
-      topStatus: "drop",
-      bill_array: noteBook.get(1).bill_array,
-      select_date_idx: 3,
-      curr_notebook: 1,
-      isReload: 0
+      topStatus: "drop"
     }
   },
   components: {
     'date-note': dateNote
   },
-  computed:{
-    list: function(){
-      console.log(this.isReload)
-
-      var arrIdx = this.bill_array[this.select_date_idx].record_arr_idx
-      var arr = []
-      var all_record = record.get()
-
-      arrIdx.forEach(function(val, idx){
-        arr.push(all_record[val-1]);
-      })
-      return arr
-    }
+  vuex: {
+    getters: getters
   },
   ready(){
-    getSearch().date ? this.$data.select_date_idx = Number(getSearch().date) - 1 : null
-    // this.$watch("isReload", function(){
-    //   this.list
-    // })
+    var select = getSearch().date ? Number(getSearch().date) - 1 : null
+    if (select) {
+      this.$store.dispatch("MODIFYSELECTDATE", {select: select})
+    }
   },
   methods: {
     swipeLeft: function (e) {
@@ -86,18 +75,16 @@ export default {
       var that = this // 缓存Vue对象
       setTimeout(function () {
         this.topStatus = 'drop'
-        location.href = "./#!/makenote?notebook=" + that.$data.curr_notebook
+        location.href = "./#!/makenote"
       },100)
     },
     removeRecord: function(index){
-      var arrIdx = this.bill_array[this.select_date_idx].record_arr_idx
-      var all_record = record.get()
-      all_record[arrIdx[index] - 1].state = 0
-      this.isReload++
-      record.set(all_record)
-
-    }
-
+      var option = {}
+      option.record = this.notelist[index] // 修改状态，变为删除
+      option.index = this.bill_array[index] // 修改具体哪条
+      option.record.state = 0
+      this.$store.dispatch("MODIFYRECORD", option)
+     }
   }
 }
 
