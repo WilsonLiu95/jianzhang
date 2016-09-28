@@ -15,9 +15,6 @@ export default function (router) {
     '/record': {
       component: require('_views/record.vue')
     },
-    '/test': {
-      component: require('_views/test.vue')
-    },
     '404': {
       component: require('_views/not-found.vue')
     }

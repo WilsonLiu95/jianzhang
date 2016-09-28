@@ -16,7 +16,6 @@
 </template>
 
 <script>
-import mock from '../mock'
 import IScroll from 'iscroll'
 
 export default {

@@ -37,14 +37,6 @@ import dateNote from '_comp/date-note'
 import getters from '_vuex/getters'
 import actions from '_vuex/actions'
 
-import mock from '../mock'
-import {user, record, noteBook, sync} from '../api/local'
-    localStorage.all_record ? null : record.set(mock.all_record)
-    localStorage.user ? null : user.set(mock.user)
-    localStorage.note_book ? null : noteBook.set(mock.note_book)
-    localStorage.current_notebook ? null : localStorage.setItem("current_notebook", 0)
-    localStorage.select_date ? null : localStorage.setItem("select_date", 12)
-
 export default {
   data: function () {
     return {
@@ -55,14 +47,11 @@ export default {
     'date-note': dateNote
   },
   vuex: {
-    getters,
-    actions
+    getters
   },
   ready(){
-    var select = getSearch().date ? Number(getSearch().date) - 1 : null
-    if (select) {
-      this.$store.dispatch("MODIFYSELECTDATE", {select: select})
-    }
+
+
   },
   methods: {
     swipeLeft: function (e) {

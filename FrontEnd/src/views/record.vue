@@ -72,17 +72,19 @@ export default {
 
       var type = this.user.custom_type_conf[this.$data.custom_type_idx]
       var index = Number(getSearch().index)
-      if (index) {
+
+      if (getSearch().index !== undefined) {
 
         // 存在则为更改
         var newRecord = {
           date: this.date,
           update_time: new Date(),
-          record_type: this.record_type,
-          custom_type: this.custom_type,
+          record_type: type.record_type,
+          custom_type: type.custom_type,
           comment: this.remark,
           money: Number(this.money)
         }
+
         // 调用VUEX的action来分发
         this.modifynote(newRecord, index)
 
@@ -103,6 +105,7 @@ export default {
           comment: this.$data.remark,
           money: Number(this.$data.money)
         }
+
         // 调用VUEX的action来分发mutations
         this.makenote(newRecord)
       }

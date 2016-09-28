@@ -20,9 +20,9 @@ export const mutations = {
     nb.bill_array[state.select_date - 1].record_arr_idx.push(option.record.user_seq_num)
   },
   MODIFYRECORD(state, option) {
-    // 直接覆盖对应的record
-    state.record[option.index] = option.record
-
+    for (var key in option.newRecord){
+      state.record[option.index][key] = option.newRecord[key]
+    }
   },
   REMOVERECORD(state, option) {
     var rd = state.record[option.index]
@@ -42,9 +42,6 @@ export const mutations = {
     var nb = state.notebook[state.current_notebook]
     var arr = nb.bill_array[option.olddate - 1].record_arr_idx
     var start = arr.indexOf(option.index)
-    if (start == -1){
-
-    }
     arr.splice(start, 1)
     nb.bill_array[option.newdate - 1].record_arr_idx.push(option.index)
   },

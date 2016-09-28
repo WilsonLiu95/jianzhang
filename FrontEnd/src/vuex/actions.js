@@ -9,11 +9,13 @@ function modifynote({ dispatch, state }, newRecord, index) {
     // 日期改变
     var newdate = new Date(newRecord.date).getDate()
     var olddate = new Date(rd.date).getDate()
+
     this.$store.dispatch("MOVERECORD", { newdate, olddate, index })
   }
+  this.$store.dispatch("MODIFYRECORD", { newRecord, index })
   this.$store.dispatch("RECHECKNOTEBOOK")
 }
 export default {
-  makenote:makenote,
-  modifynote:modifynote
+  makenote: makenote,
+  modifynote: modifynote
 }
