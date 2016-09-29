@@ -1,10 +1,9 @@
 <template>
   <div id="wrapper">
-    <div id="scroller">
+    <div id="scroller" :style="{width: getDay +'px'}">
       <ul>
         <li v-for="note in bill_array" class="date-note-item">
           <h5>{{note.date}}号</h5>
-
           <span>- {{note.payout}}</span>
           <br>
           <span>+ {{note.income}}</span>
@@ -12,9 +11,7 @@
       </ul>
     </div>
   </div>
-
 </template>
-
 <script>
 import IScroll from 'iscroll'
 
@@ -27,6 +24,11 @@ export default {
       type: Number,
       default: 1
     }},
+    computed: {
+      getDay (){
+        return this.bill_array.length * 75
+      }
+    },
   ready() {
 	  window.dateScroll = new IScroll('#wrapper', {
       eventPassthrough: true, scrollX: true, scrollY: false, preventDefault: false, snap: 'li' });
@@ -39,6 +41,13 @@ export default {
 function bindEvent(that){
   that.$watch("select", function(newVal, oldVal){
     dateScroll.goToPage(newVal - 3 ,0, 100)
+  })
+  that.$watch("getDay", function(newVal, oldVal){
+  	  window.dateScroll = new IScroll('#wrapper', {
+      eventPassthrough: true, scrollX: true, scrollY: false, preventDefault: false, snap: 'li' });
+
+    dateScroll.goToPage(this.select - 3, 0, 0)
+
   })
   dateScroll.on('beforeScrollStart', function(e){
     document.getElementsByClassName("date-note-item")[that.select -1].classList.remove("highlight")
@@ -67,7 +76,6 @@ function bindEvent(that){
     position: absolute;
     z-index: 1;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    width: 2325px;
     height: 100px;
     -webkit-transform: translateZ(0);
     -moz-transform: translateZ(0);

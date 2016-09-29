@@ -7,7 +7,7 @@
       <group>
         <calendar :value.sync="date" title="日期"></calendar>
 
-        <x-input title="备注" placeholder="大出血" :value.sync="remark"></x-input>
+        <x-input title="备注" placeholder="大出血" :value.sync="remark" :required='false'></x-input>
         <x-input title="金额" placeholder="10.20" keyboard="number" :value.sync="money"></x-input>
         <checker :value.sync="custom_type_idx" default-item-class="demo1-item" selected-item-class="demo1-item-selected">
           <checker-item v-for="item in user.custom_type_conf" :value="$index">{{item.custom_type}}</checker-item>
@@ -47,7 +47,7 @@ export default {
     Divider
   },
   ready(){
-    var index = getSearch().index
+    var index = util.getSearch().index
     var that = this
     if (index) {
       var rd = this.$store.state.record[index]
@@ -71,9 +71,9 @@ export default {
       var notebook = this.$store.state.notebook[current_notebook]
 
       var type = this.user.custom_type_conf[this.$data.custom_type_idx]
-      var index = Number(getSearch().index)
+      var index = Number(util.getSearch().index)
 
-      if (getSearch().index !== undefined) {
+      if (util.getSearch().index !== undefined) {
 
         // 存在则为更改
         var newRecord = {

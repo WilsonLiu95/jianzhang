@@ -1,3 +1,4 @@
+import types from "_vuex/types"
 function getSearch() {
   var head_idx = location.hash.indexOf("?")
   var search = location.hash.slice(head_idx + 1)
@@ -10,7 +11,7 @@ function getSearch() {
   })
   return result
 }
-function getDate(indate) {
+function getMonthDays(indate) {
   var _days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
   var _is = false;
   var _d = 365;
@@ -54,42 +55,48 @@ function formatDate(date, p, isFill) {
     m = (m < 10) ? ('0' + m) : m;
     s = (s < 10) ? ('0' + s) : s;
   }
-  p = p || '%Y-%M-%d %h:%m:%s';
-  p = p.replace(/%Y/g, Y).replace(/%M/g, M).replace(/%d/g, d).replace(/%h/g, h).replace(/%m/g, m).replace(/%s/g, s);
+  p = p || '%Y-%M-%D %h:%m:%s';
+  p = p.replace(/%Y/g, Y).replace(/%M/g, M).replace(/%D/g, d).replace(/%h/g, h).replace(/%m/g, m).replace(/%s/g, s);
   return p;
 }
-import types from "_vuex/types"
+
+
+
 function init(callback) {
 
   var d = new Date()
+  var ymd = formatDate(d, "%Y-%M-%D",true)
+  var datearr = ymd.split("-")
   var all_record = [];
 
-  var monthDays = getDate(d).monthDays
-
-  var note_book_example = {
-    note_book_id: 0, // 不可修改字段
-    note_book_name: formatDate(d, "%Y%M", true),
-    create_time: d,
-    update_time: "",
-    state: 1,
-    budget: 0.00, // 预算
-    payout: 0.00,
-    income: 0.00,
-    custom_conf: null,
-    record_num: 0,
-    bill_array: []
-  }
-  for (var i = 0; i < monthDays; i++) {
-    note_book_example.bill_array.push({
-      date: i + 1,
-      record_arr_idx: [],
-      payout: 0.00,
-      income: 0.00
-    })
-  }
-
   var note_book = []
-  note_book.push(note_book_example)
+  for (var j = 8; j >= 0; j--) {
+    d.setFullYear(datearr[0], datearr[1] - j - 1, datearr[2])
+    var monthDays = getMonthDays(d).monthDays
+    var note_book_example = {
+      note_book_id: j, // 不可修改字段
+      note_book_name: formatDate(new Date(), "%Y%M", true) - j,
+      create_time: d,
+      update_time: "",
+      state: 1,
+      budget: 0.00, // 预算
+      payout: 0.00,
+      income: 0.00,
+      custom_conf: null,
+      record_num: 0,
+      bill_array: []
+    }
+    for (var i = 0; i < monthDays; i++) {
+      note_book_example.bill_array.push({
+        date: i + 1,
+        record_arr_idx: [],
+        payout: 0.00,
+        income: 0.00
+      })
+    }
+    note_book.push(note_book_example)
+  }
+
 
   //  用户数据   包含user于config两个表的数据
   var user = {
@@ -127,10 +134,11 @@ function init(callback) {
   localStorage.all_record ? null : localStorage.setItem(types.RECORD, JSON.stringify(all_record))
   localStorage.user ? null : localStorage.setItem(types.USER, JSON.stringify(user))
   localStorage.note_book ? null : localStorage.setItem(types.NOTEBOOK, JSON.stringify(note_book))
-  localStorage.current_notebook ? null : localStorage.setItem(types.CURRENTNOTEBOOK, 0)
-  localStorage.select_date ? null : localStorage.setItem(types.SELECTDATE, 12)
+  localStorage.current_notebook ? null : localStorage.setItem(types.CURRENTNOTEBOOK, note_book.length-1)
+  localStorage.select_date ? null : localStorage.setItem(types.SELECTDATE, new Date().getDate())
 }
-export default {init}
-window.getSearch = getSearch
-window.getDate = getDate
-window.formatDate = formatDate
+export default { init }
+
+window.util = {
+  getSearch,getMonthDays,formatDate
+}
