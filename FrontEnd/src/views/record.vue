@@ -8,7 +8,7 @@
         <calendar :value.sync="date" title="日期"></calendar>
 
         <x-input title="备注" placeholder="大出血" :value.sync="remark" :required='false'></x-input>
-        <x-input title="金额" placeholder="10.20" keyboard="number" :value.sync="money"></x-input>
+        <x-input title="金额" placeholder="10.20" :value.sync="money" :readonly=true></x-input>
         <checker :value.sync="custom_type_idx" default-item-class="demo1-item" selected-item-class="demo1-item-selected">
           <checker-item v-for="item in user.custom_type_conf" :value="$index">{{item.custom_type}}</checker-item>
         </checker>
@@ -17,18 +17,22 @@
       </group>
     </div>
   </div>
+  <keyboard :result.sync="money"></keyboard>
+
+
 </template>
 <script>
 import { Group,Calendar,Checker, CheckerItem, XInput, Divider} from 'vux/src/components'
 import getters from '_vuex/getters'
 import actions from '_vuex/actions'
+import keyboard from '_comp/keyboard'
 export default {
   data: function () {
     return {
       date: 'TODAY',
       custom_type_idx: 0,
       remark:"标注",
-      money: "10.30"
+      money: "",
     }
   },
   vuex: {
@@ -44,7 +48,8 @@ export default {
     Checker,
     CheckerItem,
     XInput,
-    Divider
+    Divider,
+    keyboard
   },
   ready(){
     var index = util.getSearch().index
