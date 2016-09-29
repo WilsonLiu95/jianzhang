@@ -6,18 +6,18 @@
     <div class="main-body">
       <group>
         <calendar :value.sync="date" title="日期"></calendar>
+        <x-input title="备注" placeholder="大出血" :value.sync="remark" :required=false></x-input>
+        <x-input title="金额" placeholder="10.20" :value.sync="money" :readonly=true ></x-input>
 
-        <x-input title="备注" placeholder="大出血" :value.sync="remark" :required='false'></x-input>
-        <x-input title="金额" placeholder="10.20" :value.sync="money" :readonly=true></x-input>
-        <checker :value.sync="custom_type_idx" default-item-class="demo1-item" selected-item-class="demo1-item-selected">
+        <checker :value.sync="custom_type_idx" default-item-class="customtype-item" selected-item-class="customtype-item-selected">
           <checker-item v-for="item in user.custom_type_conf" :value="$index">{{item.custom_type}}</checker-item>
         </checker>
         <divider></divider>
-        <mt-button type="primary" size="large" @click="submit">确认</mt-button>
       </group>
     </div>
+    <keyboard :result.sync="money" :submit="submit"></keyboard>
   </div>
-  <keyboard :result.sync="money"></keyboard>
+
 
 
 </template>
@@ -31,7 +31,7 @@ export default {
     return {
       date: 'TODAY',
       custom_type_idx: 0,
-      remark:"标注",
+      remark:"",
       money: "",
     }
   },
@@ -128,16 +128,40 @@ export default {
     background: rgba(255, 255, 255, 0.5);
   }
 
-  .demo1-item {
-    border: 1px solid #ececec;
-    padding: 5px 15px;
+  .vux-checker-box {
+    padding: 0 15px;
+    height: 200px;
+    overflow-y: scroll;
   }
 
-  .demo1-item-selected {
-    border: 1px solid green;
+  .customtype-item {
+    width: 50px;
+    text-align: center;
+    font-size: 14px;
+    border: 1px solid #ececec;
+    overflow-x: auto;
+    white-space:nowrap;
+    margin: 1px 2px;
+    padding: 5px 5px;
+  }
+
+  .customtype-item-selected {
+    border-radius: 4px;
+    background-color: #1FB9FF;
+    color: #FFF;
   }
 
   .main-body .vux-no-group-title {
     margin-top: 0;
+  }
+
+  @media (max-height: 490px) {
+    /* iphone4 为480px */
+    .vux-checker-box {
+      height: 150px;
+    }
+    .customtype-item {
+      font-size: 12px;
+    }
   }
 </style>
