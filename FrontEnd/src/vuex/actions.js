@@ -3,6 +3,10 @@ function makenote({ dispatch, state }, newRecord) {
   this.$store.dispatch("ADDRECORD", { record: newRecord })
   this.$store.dispatch("RECHECKNOTEBOOK")
 }
+function removenote ({ dispatch, state },option) {
+  this.$store.dispatch("REMOVERECORD", option)
+  this.$store.dispatch("RECHECKNOTEBOOK")
+}
 function modifynote({ dispatch, state }, newRecord, index) {
   var rd = this.$store.state.record[index]
   if (newRecord.date !== rd.date) {
@@ -16,6 +20,5 @@ function modifynote({ dispatch, state }, newRecord, index) {
   this.$store.dispatch("RECHECKNOTEBOOK")
 }
 export default {
-  makenote: makenote,
-  modifynote: modifynote
+  makenote,modifynote,removenote
 }

@@ -77,6 +77,8 @@ export const mutations = {
         }
       })
     }
+      nb.payout.toFixed(2)
+      nb.income.toFixed(2)
   },
   //=======================================USER操作部分=================================================
   USER(state, option) {

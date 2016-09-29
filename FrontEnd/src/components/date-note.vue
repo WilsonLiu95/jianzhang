@@ -2,11 +2,11 @@
   <div id="wrapper">
     <div id="scroller" :style="{width: getDay +'px'}">
       <ul>
-        <li v-for="note in bill_array" class="date-note-item">
+        <li v-for="(index, note) in bill_array" class="date-note-item" v-touch:tap="selectDate(index)" :class="{highlight: index+1 == select}">
           <h5>{{note.date}}号</h5>
-          <span>- {{note.payout}}</span>
+          <span>- {{note.payout.toFixed(2)}}</span>
           <br>
-          <span>+ {{note.income}}</span>
+          <span>+ {{note.income.toFixed(2)}}</span>
         </li>
       </ul>
     </div>
@@ -24,15 +24,20 @@ export default {
       type: Number,
       default: 1
     }},
-    computed: {
+ computed: {
       getDay (){
         return this.bill_array.length * 75
+      }
+    },
+    methods: {
+      selectDate: function(index){
+        index++
+        this.$store.dispatch("MODIFYSELECTDATE", {select: index})
       }
     },
   ready() {
 	  window.dateScroll = new IScroll('#wrapper', {
       eventPassthrough: true, scrollX: true, scrollY: false, preventDefault: false, snap: 'li' });
-
     dateScroll.goToPage(this.select - 3, 0, 100)
     bindEvent(this);
   }
@@ -45,17 +50,12 @@ function bindEvent(that){
   that.$watch("getDay", function(newVal, oldVal){
   	  window.dateScroll = new IScroll('#wrapper', {
       eventPassthrough: true, scrollX: true, scrollY: false, preventDefault: false, snap: 'li' });
+    dateScroll.goToPage(that.select - 3, 0, 0)
 
-    dateScroll.goToPage(this.select - 3, 0, 0)
-
-  })
-  dateScroll.on('beforeScrollStart', function(e){
-    document.getElementsByClassName("date-note-item")[that.select -1].classList.remove("highlight")
   })
   dateScroll.on('scrollEnd', function(e){
     that.select = dateScroll.currentPage.pageX + 3
     that.$store.dispatch("MODIFYSELECTDATE", {select: that.select})
-    document.getElementsByClassName("date-note-item")[that.select - 1].classList.add("highlight")
   });
 }
 </script>
