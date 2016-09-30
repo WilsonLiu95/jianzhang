@@ -8,7 +8,7 @@
       <date-note :bill_array="bill_array" :select="select_date">
       </date-note>
       <mt-loadmore :top-method="loadTop" :top-status.sync="topStatus">
-        <swipe-item :list="notelist" >
+        <swipe-item :list="notelist" :tap="modifyNote" :remove="removeRecord">
         </swipe-item>
         <div slot="top" class="mint-loadmore-top">
           <span v-show="topStatus === 'loading'">
@@ -74,16 +74,6 @@ export default {
         this.sheetVisible = true
       }
     },
-    // swipeLeft: function (e) {
-    //   if (e.target.parentElement.className.indexOf("note-card-item") === -1) return
-    //   e.target.parentElement.classList.remove("swiperight")
-    //   e.target.parentElement.classList.add("swipeleft")
-    // },
-    // swipeRight: function (e) {
-    //   if (e.target.parentElement.className.indexOf("note-card-item") === -1) return
-    //   e.target.parentElement.classList.remove("swipeleft")
-    //   e.target.parentElement.classList.add("swiperight")
-    // },
     loadTop: function(){
       var that = this // 缓存Vue对象
       setTimeout(function () {
@@ -106,123 +96,5 @@ export default {
 
 </script>
 <style>
-  .note-card-item {
-    background-color: #fff;
-    font-size: 16px;
-    line-height: 1;
-    height: 40px;
-    position: relative;
-    border-top: 1px solid #ccc;
-    width: 120%;
-  }
 
-  li {
-    list-style: none;
-  }
-
-  .swipeleft {
-    animation: swipeleft 0.5s forwards;
-    -moz-animation: swipeleft 0.5s forwards;
-    /* Firefox */
-    -webkit-animation: swipeleft 0.5s forwards;
-    /* Safari and Chrome */
-    -o-animation: swipeleft 0.5s forwards;
-    /* Opera */
-  }
-
-  .swiperight {
-    animation: swiperight 0.5s forwards;
-    -moz-animation: swiperight 0.5s forwards;
-    /* Firefox */
-    -webkit-animation: swiperight 0.5s forwards;
-    /* Safari and Chrome */
-    -o-animation: swiperight 0.5s forwards;
-    /* Opera */
-  }
-
-  .note-card {
-    min-height: 400px;
-  }
-
-  .note-card-item div {
-    display: inline-block;
-    height: 40px;
-  }
-
-  .note-card-main {
-    float: left;
-    width: 83.33%;
-  }
-
-  .note-card-right {
-    float: left;
-    width: 16%;
-    background-color: red;
-  }
-
-  @keyframes swipeleft {
-    from {
-      margin-left: 0
-    }
-    to {
-      margin-left: -60px
-    }
-  }
-
-  @-moz-keyframes swipeleft
-  /* Firefox */
-
-  {
-    from {
-      margin-left: 0
-    }
-    to {
-      margin-left: -60px
-    }
-  }
-
-  @-webkit-keyframes swipeleft
-  /* Safari 和 Chrome */
-
-  {
-    from {
-      margin-left: 0
-    }
-    to {
-      margin-left: -60px
-    }
-  }
-
-  @keyframes swiperight {
-    from {
-      margin-left: -60px
-    }
-    to {
-      margin-left: 0px
-    }
-  }
-
-  @-moz-keyframes swiperight
-  /* Firefox */
-
-  {
-    from {
-      margin-left: -60px
-    }
-    to {
-      margin-left: 0px
-    }
-  }
-
-  @-webkit-keyframes swiperight
-  /* Safari 和 Chrome */
-
-  {
-    from {
-      margin-left: -60px
-    }
-    to {
-      margin-left: 0px
-    }
-  }
 </style>
