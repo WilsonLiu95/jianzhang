@@ -1,5 +1,5 @@
 <template>
-  <div class="animated" transition="makenote">
+  <div>
     <mt-header fixed title="记一笔">
       <mt-button v-link="'/index'" icon="back" slot="left"></mt-button>
     </mt-header>
@@ -7,7 +7,7 @@
       <group>
         <calendar :value.sync="date" title="日期"></calendar>
         <x-input title="备注" placeholder="大出血" :value.sync="remark" :required=false></x-input>
-        <x-input title="金额" placeholder="10.20" :value.sync="money" :readonly=true ></x-input>
+        <x-input title="金额" placeholder="10.20" :value.sync="money" :readonly=true></x-input>
 
         <checker :value.sync="custom_type_idx" default-item-class="customtype-item" selected-item-class="customtype-item-selected">
           <checker-item v-for="item in user.custom_type_conf" :value="$index">{{item.custom_type}}</checker-item>
@@ -140,7 +140,7 @@ export default {
     font-size: 14px;
     border: 1px solid #ececec;
     overflow-x: auto;
-    white-space:nowrap;
+    white-space: nowrap;
     margin: 1px 2px;
     padding: 5px 5px;
   }

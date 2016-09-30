@@ -2,14 +2,11 @@
   <div id="app">
     <router-view>
     </router-view>
-
   </div>
 </template>
 
 <script>
 import store from './vuex/index'
-
-
   export default {
     data: function () {
       return {
@@ -47,6 +44,12 @@ import store from './vuex/index'
     box-sizing: border-box;
   }
 
+  html,
+  body,
+  #app{
+    height: 100%;
+  }
+
   body,
   ul,
   li {
@@ -56,8 +59,8 @@ import store from './vuex/index'
   }
 
   .main-body {
-    position: relative;
-    top: 42px;
+    height: 100%;
+    padding-top:42px;
   }
 
   .left {

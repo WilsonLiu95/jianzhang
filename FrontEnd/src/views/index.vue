@@ -7,21 +7,9 @@
     <div class="main-body">
       <date-note :bill_array="bill_array" :select="select_date">
       </date-note>
-
       <mt-loadmore :top-method="loadTop" :top-status.sync="topStatus">
-        <ul class="note-card">
-          <li class="note-card-item" v-for="(index, item) in notelist" track-by="$index" v-if="item.state" v-touch:swipeleft="swipeLeft"
-            v-touch:swiperight="swipeRight" >
-            <div class="note-card-main" v-touch:tap="modifyNote(index)">
-              <span>{{item.custom_type}}</span>
-              <span class="">{{item.record_type ==="支出" ? "-" : "+"}} {{item.money.toFixed(2)}}</span>
-            </div>
-            <div class="note-card-right">
-              <span v-touch:tap="removeRecord(index)">删除</span>
-            </div>
-
-          </li>
-        </ul>
+        <swipe-item :list="notelist" >
+        </swipe-item>
         <div slot="top" class="mint-loadmore-top">
           <span v-show="topStatus === 'loading'">
             <mt-spinner type="triple-bounce" color="#26a2ff"></mt-spinner>
@@ -38,7 +26,7 @@ import { Group, Selector} from 'vux/src/components'
 import dateNote from '_comp/date-note'
 import getters from '_vuex/getters'
 import actions from '_vuex/actions'
-
+import swipeItem from '_comp/swipe-item'
 export default {
   data: function () {
     return {
@@ -49,7 +37,8 @@ export default {
   components: {
     dateNote,
     Group,
-    Selector
+    Selector,
+    swipeItem
   },
   vuex: {
     getters,actions
@@ -85,16 +74,16 @@ export default {
         this.sheetVisible = true
       }
     },
-    swipeLeft: function (e) {
-      if (e.target.parentElement.className.indexOf("note-card-item") === -1) return
-      e.target.parentElement.classList.remove("swiperight")
-      e.target.parentElement.classList.add("swipeleft")
-    },
-    swipeRight: function (e) {
-      if (e.target.parentElement.className.indexOf("note-card-item") === -1) return
-      e.target.parentElement.classList.remove("swipeleft")
-      e.target.parentElement.classList.add("swiperight")
-    },
+    // swipeLeft: function (e) {
+    //   if (e.target.parentElement.className.indexOf("note-card-item") === -1) return
+    //   e.target.parentElement.classList.remove("swiperight")
+    //   e.target.parentElement.classList.add("swipeleft")
+    // },
+    // swipeRight: function (e) {
+    //   if (e.target.parentElement.className.indexOf("note-card-item") === -1) return
+    //   e.target.parentElement.classList.remove("swipeleft")
+    //   e.target.parentElement.classList.add("swiperight")
+    // },
     loadTop: function(){
       var that = this // 缓存Vue对象
       setTimeout(function () {

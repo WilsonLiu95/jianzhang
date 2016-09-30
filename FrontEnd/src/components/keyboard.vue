@@ -93,12 +93,10 @@ export default {
     border-top: 0;
     padding: 0;
   }
-
-  .keyboard-wrapper td:hover {
+  .keyboard-wrapper td:active {
     background-color: #1FB9FF;
     color: #FFF;
   }
-
   @media (max-height: 490px) {
     .keyboard-wrapper {
       height: 130px;

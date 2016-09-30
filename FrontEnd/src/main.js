@@ -29,10 +29,7 @@ Vue.transition('slide', {
   enterClass: 'slideInLeft',
   leaveClass: 'hide'
 })
-Vue.transition('makenote', {
-  enterClass: 'slideInUp',
-  leaveClass: 'hide'
-})
+
 // For every new route scroll to the top of the page
 router.beforeEach(function () {
   window.scrollTo(0, 0)
