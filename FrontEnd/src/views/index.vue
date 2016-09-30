@@ -1,9 +1,10 @@
 <template>
   <div class="animated" transition="slide">
-    <mt-header fixed :title="'当前账本:' + currentbook" @click="selectNotebook">
-      <mt-button v-link="'/config'" icon="more" slot="left"></mt-button>
-      <mt-button v-link="'/record'" slot="right">+</mt-button>
-    </mt-header>
+    <x-header  :left-options="{showBack: false}" style="linear-gradient(180deg,#303036,#3c3b40)">
+      <a slot="left" v-link="'/config'" class="header-left"></a>
+      <a slot @click="selectNotebook">当前账本: {{currentbook}}</a>
+      <a slot="right" v-link="'/record'" class="header-right" style="transform: scale(2);">+</a>
+    </x-header>
     <div class="main-body">
       <date-note :bill_array="bill_array" :select="select_date">
       </date-note>
@@ -23,7 +24,7 @@
   </mt-actionsheet>
 </template>
 <script>
-import { Group, Selector} from 'vux/src/components'
+import { Group, Selector, XHeader} from 'vux/src/components'
 import dateNote from '_comp/date-note'
 import getters from '_vuex/getters'
 import actions from '_vuex/actions'
@@ -39,7 +40,8 @@ export default {
     dateNote,
     Group,
     Selector,
-    swipeItem
+    swipeItem,
+    XHeader
   },
   vuex: {
     getters,actions
@@ -71,16 +73,14 @@ export default {
   },
   methods: {
     selectNotebook: function(e){
-      if (e.target.className.indexOf("mint-header-title") !== -1){
         this.sheetVisible = true
-      }
     },
     loadTop: function(){
       var that = this // 缓存Vue对象
       setTimeout(function () {
         this.topStatus = 'drop'
         location.href = "./#!/record"
-      },10)
+      },50)
     },
     removeRecord: function(index){
       var option = {}
@@ -100,4 +100,25 @@ export default {
   .note-card {
     min-height: 400px;
   }
+
+  .header-left:before {
+    content: "\2022\0020\2022\0020\2022\0020";
+    font-size: 16px
+  }
+
+  /*.header-right:before {
+    content: "";
+    position: absolute;
+    display: block;
+    top: 2px;
+    left: 0;
+    width: 12px;
+    height: 12px;
+    border: 1px solid #ccc;
+    border-width: 1px 0 0 1px;
+    margin-left: 3px;
+    margin-top: 1px;
+    -webkit-transform: rotate(315deg);
+    transform: rotate(315deg);
+  }*/
 </style>

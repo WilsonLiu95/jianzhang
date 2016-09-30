@@ -1,8 +1,8 @@
 <template>
   <div>
-    <mt-header fixed title="记一笔">
-      <mt-button v-link="'/index'" icon="back" slot="left"></mt-button>
-    </mt-header>
+    <x-header  :left-options="{showBack: true}" style="linear-gradient(180deg,#303036,#3c3b40)">
+      <a slot >记一笔</a>
+    </x-header>
     <div class="main-body">
       <group>
         <calendar :value.sync="date" title="日期"></calendar>
@@ -22,7 +22,7 @@
 
 </template>
 <script>
-import { Group,Calendar,Checker, CheckerItem, XInput, Divider} from 'vux/src/components'
+import { Group,Calendar,Checker, CheckerItem, XInput, Divider,XHeader} from 'vux/src/components'
 import getters from '_vuex/getters'
 import actions from '_vuex/actions'
 import keyboard from '_comp/keyboard'
@@ -49,6 +49,7 @@ export default {
     CheckerItem,
     XInput,
     Divider,
+    XHeader,
     keyboard
   },
   ready(){

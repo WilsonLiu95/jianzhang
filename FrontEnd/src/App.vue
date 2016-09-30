@@ -60,7 +60,7 @@ import store from './vuex/index'
 
   .main-body {
     height: 100%;
-    padding-top:42px;
+    /*padding-top:42px;*/
   }
 
   .left {

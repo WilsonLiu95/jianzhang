@@ -1,8 +1,11 @@
 <template>
   <div class="animated" transition="slide">
-    <mt-header fixed title="设置">
+    <!--<mt-header fixed title="设置">
       <mt-button v-link="'/index'" icon="back" slot="left"></mt-button>
-    </mt-header>
+    </mt-header>-->
+    <x-header  :left-options="{showBack: true}" style="linear-gradient(180deg,#303036,#3c3b40)">
+      <a slot >设置</a>
+    </x-header>
     <div class="main-body">
       <mt-cell title="类别管理" href="/#!/noteType" is-link></mt-cell>
       <mt-cell title="账本管理" href="/#!/noteBook" is-link></mt-cell>
@@ -13,7 +16,7 @@
 
 </template>
 <script>
-
+import { Group, Selector, XHeader} from 'vux/src/components'
 export default {
   data: function () {
     return {
@@ -21,7 +24,7 @@ export default {
     }
   },
   components: {
-
+XHeader
   },
   computed:{
 
