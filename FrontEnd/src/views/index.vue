@@ -8,7 +8,7 @@
     <div class="main-body">
       <date-note :bill_array="bill_array" :select="select_date">
       </date-note>
-      <scroller  :pulldown-config={content:'下拉记账',downContent:'下拉前往记账',upContent:'释放跳转记账'}
+      <scroller :pulldown-config="{content:'下拉记账',downContent:'下拉前往记账',upContent:'释放跳转记账'}"
         @pulldown:loading="loadTop" height="200px" lock-x  use-pulldown bounce >
         <swipe-item class="note-card" :list="notelist" :tap="modifyNote" :remove="removeRecord">
         </swipe-item>
