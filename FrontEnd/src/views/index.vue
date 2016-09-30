@@ -1,30 +1,26 @@
 <template>
   <div class="animated" transition="slide">
-    <x-header  :left-options="{showBack: false}" style="linear-gradient(180deg,#303036,#3c3b40)">
+    <x-header :left-options="{showBack: false}" style="linear-gradient(180deg,#303036,#3c3b40)">
       <a slot="left" v-link="'/config'" class="header-left"></a>
-      <a slot @click="selectNotebook">当前账本: {{currentbook}}</a>
+      <a slot @click="showActionsheet">当前账本: {{currentbook}}</a>
       <a slot="right" v-link="'/record'" class="header-right" style="transform: scale(2);">+</a>
     </x-header>
     <div class="main-body">
       <date-note :bill_array="bill_array" :select="select_date">
       </date-note>
-      <mt-loadmore :top-method="loadTop" :top-status.sync="topStatus">
+      <scroller  :pulldown-config={content:'下拉记账',downContent:'下拉前往记账',upContent:'释放跳转记账'}
+        @pulldown:loading="loadTop" height="200px" lock-x  use-pulldown bounce >
         <swipe-item class="note-card" :list="notelist" :tap="modifyNote" :remove="removeRecord">
         </swipe-item>
-        <div slot="top" class="mint-loadmore-top">
-          <span v-show="topStatus === 'loading'">
-            <mt-spinner type="triple-bounce" color="#26a2ff"></mt-spinner>
-            </span>
-
-        </div>
-      </mt-loadmore>
+      </scroller>
     </div>
   </div>
-  <mt-actionsheet :actions="notebookarr" :visible.sync="sheetVisible">
-  </mt-actionsheet>
+  <actionsheet :show.sync="sheetVisible" :menus="notebookarr" @on-click-menu="selectNotebook">
+
+  </actionsheet>
 </template>
 <script>
-import { Group, Selector, XHeader} from 'vux/src/components'
+import { Group, Selector, XHeader, Actionsheet,Scroller} from 'vux/src/components'
 import dateNote from '_comp/date-note'
 import getters from '_vuex/getters'
 import actions from '_vuex/actions'
@@ -32,7 +28,6 @@ import swipeItem from '_comp/swipe-item'
 export default {
   data: function () {
     return {
-      topStatus: "drop",
       sheetVisible: false
     }
   },
@@ -41,7 +36,9 @@ export default {
     Group,
     Selector,
     swipeItem,
-    XHeader
+    XHeader,
+    Scroller,
+    Actionsheet
   },
   vuex: {
     getters,actions
@@ -54,33 +51,24 @@ export default {
     notebookarr: function(){
       var state = this.$store.state
       var that = this
-      var arr = []
+      var arr = {}
       state.notebook.forEach(function(val,index){
         // 如果是删除则不返回
         if(!val.state) return
-
-        arr.push({
-          name: val.note_book_name,
-          method: function(){
-            // 触发更改当前账本
-            that.$store.dispatch("MODIFYCURRENTNOTEBOOK", {select:index})
-          // return index
-         }
-        })
+        arr[index] = val.note_book_name
       })
       return arr
     }
   },
   methods: {
-    selectNotebook: function(e){
+    showActionsheet: function(e){
         this.sheetVisible = true
     },
+    selectNotebook(key, value) {
+      this.$store.dispatch("MODIFYCURRENTNOTEBOOK", {select:key})
+    },
     loadTop: function(){
-      var that = this // 缓存Vue对象
-      setTimeout(function () {
-        this.topStatus = 'drop'
         location.href = "./#!/record"
-      },50)
     },
     removeRecord: function(index){
       var option = {}
@@ -97,28 +85,9 @@ export default {
 
 </script>
 <style>
-  .note-card {
-    min-height: 400px;
-  }
-
   .header-left:before {
     content: "\2022\0020\2022\0020\2022\0020";
     font-size: 16px
   }
 
-  /*.header-right:before {
-    content: "";
-    position: absolute;
-    display: block;
-    top: 2px;
-    left: 0;
-    width: 12px;
-    height: 12px;
-    border: 1px solid #ccc;
-    border-width: 1px 0 0 1px;
-    margin-left: 3px;
-    margin-top: 1px;
-    -webkit-transform: rotate(315deg);
-    transform: rotate(315deg);
-  }*/
 </style>

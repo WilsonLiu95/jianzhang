@@ -4,22 +4,17 @@ import VueResource from 'vue-resource' // 用于发起请求并处理响应
 import Vuex from 'vuex'
 import VueTouch from 'vue-touch'
 
-import MintUI from 'mint-ui'
-import 'mint-ui/lib/style.css'
 import 'animate.css'
 
 import routerConfig from './router'
 import App from './App.vue'
 
-
 import util from './util'
 
-// import initdata from "../init"
 // =====================安装引入的插件==========================
 Vue.use(VueRouter)
 Vue.use(VueResource)
 Vue.use(VueTouch)
-Vue.use(MintUI)
 Vue.use(Vuex)
 
 // ======================配置路由===============================
