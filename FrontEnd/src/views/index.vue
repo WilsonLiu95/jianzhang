@@ -8,12 +8,13 @@
       <date-note :bill_array="bill_array" :select="select_date">
       </date-note>
       <mt-loadmore :top-method="loadTop" :top-status.sync="topStatus">
-        <swipe-item :list="notelist" :tap="modifyNote" :remove="removeRecord">
+        <swipe-item class="note-card" :list="notelist" :tap="modifyNote" :remove="removeRecord">
         </swipe-item>
         <div slot="top" class="mint-loadmore-top">
           <span v-show="topStatus === 'loading'">
             <mt-spinner type="triple-bounce" color="#26a2ff"></mt-spinner>
             </span>
+
         </div>
       </mt-loadmore>
     </div>
@@ -79,7 +80,7 @@ export default {
       setTimeout(function () {
         this.topStatus = 'drop'
         location.href = "./#!/record"
-      },100)
+      },10)
     },
     removeRecord: function(index){
       var option = {}
@@ -96,5 +97,7 @@ export default {
 
 </script>
 <style>
-
+  .note-card {
+    min-height: 400px;
+  }
 </style>
