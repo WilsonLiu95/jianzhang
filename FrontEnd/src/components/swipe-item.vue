@@ -73,7 +73,7 @@ export default {
     z-index: 2;
     background-color: #fff;
     height: 100%;
-    transition: transform .2s linear;
+    transition: transform .1s linear;
   }
 
   .swipe-item-right {

@@ -61,16 +61,14 @@ function formatDate(date, p, isFill) {
 }
 
 
-
 function init(callback) {
-
   var d = new Date()
-  var ymd = formatDate(d, "%Y-%M-%D",true)
+  var ymd = formatDate(d, "%Y-%M-%D", true)
   var datearr = ymd.split("-")
   var all_record = [];
 
   var note_book = []
-  for (var j = 8; j >= 0; j--) {
+  for (var j = 2; j >= 1; j--) {
     d.setFullYear(datearr[0], datearr[1] - j - 1, datearr[2])
     var monthDays = getMonthDays(d).monthDays
     var note_book_example = {
@@ -108,61 +106,61 @@ function init(callback) {
       custom_type: "用餐", // 自定义类型
       record_type: "支出", // 记录类型
     }, {
-        custom_type: "工资", // 自定义类型
-        record_type: "收入", // 记录类型
-      }, {
-        custom_type: "零食", // 自定义类型
-        record_type: "支出", // 记录类型
-      }, {
-        custom_type: "交通", // 自定义类型
-        record_type: "支出", // 记录类型
-      }, {
-        custom_type: "娱乐", // 自定义类型
-        record_type: "支出", // 记录类型
-      }, {
-        custom_type: "社交", // 自定义类型
-        record_type: "支出", // 记录类型
-      }, {
-        custom_type: "购物", // 自定义类型
-        record_type: "支出", // 记录类型
-      },{
-        custom_type: "零食3", // 自定义类型
-        record_type: "支出", // 记录类型
-      }, {
-        custom_type: "交通2", // 自定义类型
-        record_type: "支出", // 记录类型
-      }, {
-        custom_type: "娱乐2", // 自定义类型
-        record_type: "支出", // 记录类型
-      }, {
-        custom_type: "社交2", // 自定义类型
-        record_type: "支出", // 记录类型
-      }, {
-        custom_type: "购物2", // 自定义类型
-        record_type: "支出", // 记录类型
-        }, {
-        custom_type: "社交", // 自定义类型
-        record_type: "支出", // 记录类型
-      }, {
-        custom_type: "购物", // 自定义类型
-        record_type: "支出", // 记录类型
-      },{
-        custom_type: "零食3", // 自定义类型
-        record_type: "支出", // 记录类型
-      }, {
-        custom_type: "交通211111", // 自定义类型
-        record_type: "支出", // 记录类型
-      }, {
-        custom_type: "娱乐2", // 自定义类型
-        record_type: "支出", // 记录类型
-      }, {
-        custom_type: "社交2", // 自定义类型
-        record_type: "支出", // 记录类型
-      }, {
-        custom_type: "购物2", // 自定义类型
-        record_type: "支出", // 记录类型
-        }
-        ],
+      custom_type: "工资", // 自定义类型
+      record_type: "收入", // 记录类型
+    }, {
+      custom_type: "零食", // 自定义类型
+      record_type: "支出", // 记录类型
+    }, {
+      custom_type: "交通", // 自定义类型
+      record_type: "支出", // 记录类型
+    }, {
+      custom_type: "娱乐", // 自定义类型
+      record_type: "支出", // 记录类型
+    }, {
+      custom_type: "社交", // 自定义类型
+      record_type: "支出", // 记录类型
+    }, {
+      custom_type: "购物", // 自定义类型
+      record_type: "支出", // 记录类型
+    }, {
+      custom_type: "零食3", // 自定义类型
+      record_type: "支出", // 记录类型
+    }, {
+      custom_type: "交通2", // 自定义类型
+      record_type: "支出", // 记录类型
+    }, {
+      custom_type: "娱乐2", // 自定义类型
+      record_type: "支出", // 记录类型
+    }, {
+      custom_type: "社交2", // 自定义类型
+      record_type: "支出", // 记录类型
+    }, {
+      custom_type: "购物2", // 自定义类型
+      record_type: "支出", // 记录类型
+    }, {
+      custom_type: "社交", // 自定义类型
+      record_type: "支出", // 记录类型
+    }, {
+      custom_type: "购物", // 自定义类型
+      record_type: "支出", // 记录类型
+    }, {
+      custom_type: "零食3", // 自定义类型
+      record_type: "支出", // 记录类型
+    }, {
+      custom_type: "交通211111", // 自定义类型
+      record_type: "支出", // 记录类型
+    }, {
+      custom_type: "娱乐2", // 自定义类型
+      record_type: "支出", // 记录类型
+    }, {
+      custom_type: "社交2", // 自定义类型
+      record_type: "支出", // 记录类型
+    }, {
+      custom_type: "购物2", // 自定义类型
+      record_type: "支出", // 记录类型
+    }
+    ],
     head_url: "http://wilsonliu.cn/cdn/wilsonliuhead.png", // 预留字段
     age: 20, // 预留字段
     jobs: "学生", // 预留字段
@@ -171,11 +169,11 @@ function init(callback) {
   localStorage.all_record ? null : localStorage.setItem(types.RECORD, JSON.stringify(all_record))
   localStorage.user ? null : localStorage.setItem(types.USER, JSON.stringify(user))
   localStorage.note_book ? null : localStorage.setItem(types.NOTEBOOK, JSON.stringify(note_book))
-  localStorage.current_notebook ? null : localStorage.setItem(types.CURRENTNOTEBOOK, note_book.length-1)
+  localStorage.current_notebook ? null : localStorage.setItem(types.CURRENTNOTEBOOK, note_book.length - 1)
   localStorage.select_date ? null : localStorage.setItem(types.SELECTDATE, new Date().getDate())
 }
 export default { init }
 
 window.util = {
-  getSearch,getMonthDays,formatDate
+  getSearch, getMonthDays, formatDate
 }

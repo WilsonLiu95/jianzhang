@@ -116,4 +116,7 @@ function bindEvent(that){
   #scroller li.highlight {
     background: #ccc;
   }
+  .date-note-item {
+    border: 20px;
+  }
 </style>
