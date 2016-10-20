@@ -65,7 +65,7 @@ function bindEvent(that){
   #wrapper {
     position: relative;
     z-index: 1;
-    height: 100px;
+    height: 75px;
     width: 100%;
     background: #ccc;
     overflow: hidden;
@@ -103,7 +103,7 @@ function bindEvent(that){
 
   #scroller li {
     width: 75px;
-    height: 100px;
+    height: 75px;
     float: left;
     border-right: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
@@ -117,6 +117,6 @@ function bindEvent(that){
     background: #ccc;
   }
   .date-note-item {
-    border: 20px;
+    border-radius: 75px;
   }
 </style>

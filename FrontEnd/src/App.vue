@@ -43,7 +43,14 @@ import store from './vuex/index'
     -moz-box-sizing: border-box;
     box-sizing: border-box;
   }
-
+.vux-header {
+  -webkit-touch-callout:none;
+  -webkit-user-select:none;
+  -khtml-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  user-select:none;
+}
   html,
   body,
   #app{
@@ -57,10 +64,17 @@ import store from './vuex/index'
     margin: 0;
     border: 0;
   }
-
+  #app > div:first-child {
+    height:100%;
+  }
+  #app .vux-header {
+    width:100%;
+    position: fixed;
+    z-index: 10;
+  }
   .main-body {
     height: 100%;
-    /*padding-top:42px;*/
+    padding-top:46px;
   }
 
   .left {

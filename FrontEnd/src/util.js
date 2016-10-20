@@ -132,33 +132,6 @@ function init(callback) {
     }, {
       custom_type: "娱乐2", // 自定义类型
       record_type: "支出", // 记录类型
-    }, {
-      custom_type: "社交2", // 自定义类型
-      record_type: "支出", // 记录类型
-    }, {
-      custom_type: "购物2", // 自定义类型
-      record_type: "支出", // 记录类型
-    }, {
-      custom_type: "社交", // 自定义类型
-      record_type: "支出", // 记录类型
-    }, {
-      custom_type: "购物", // 自定义类型
-      record_type: "支出", // 记录类型
-    }, {
-      custom_type: "零食3", // 自定义类型
-      record_type: "支出", // 记录类型
-    }, {
-      custom_type: "交通211111", // 自定义类型
-      record_type: "支出", // 记录类型
-    }, {
-      custom_type: "娱乐2", // 自定义类型
-      record_type: "支出", // 记录类型
-    }, {
-      custom_type: "社交2", // 自定义类型
-      record_type: "支出", // 记录类型
-    }, {
-      custom_type: "购物2", // 自定义类型
-      record_type: "支出", // 记录类型
     }
     ],
     head_url: "http://wilsonliu.cn/cdn/wilsonliuhead.png", // 预留字段

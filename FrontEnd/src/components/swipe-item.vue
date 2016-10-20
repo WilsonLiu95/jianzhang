@@ -2,7 +2,7 @@
   <ul class="swipe-list">
     <li class="swipe-item" v-for="(index, item) in list" track-by="$index"
       v-if="item.state" v-touch:swipeleft="swipeLeft($index)" >
-      <div class="swipe-item-main" @touchstart="touchstart($index)" v-touch:tap="swipetap(index)" :class="{'current':currentIndex==$index}">
+      <div class="swipe-item-main" @touchstart="touchstart($index)"  v-touch:tap="swipetap(index)" :class="{'current':currentIndex==$index}">
         <span>{{item.custom_type}}</span>
         <span class="">{{item.record_type ==="支出" ? "-" : "+"}} {{item.money.toFixed(2)}}</span>
       </div>
@@ -36,7 +36,8 @@ export default {
    },
   methods: {
     swipeLeft (_index){
-                  event.stopPropagation()
+      event.preventDefault();
+      event.stopPropagation()
             if (!this.isTouchSwipe) {
                 this.isTouchSwipe = true
                 this.currentIndex = _index
@@ -53,7 +54,8 @@ export default {
               this.tap(index)
             }
             this.isTouchSwipe = false
-    }
+    },
+
   }}
 </script>
 <style scoped>

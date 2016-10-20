@@ -10,7 +10,8 @@ import routerConfig from './router'
 import App from './App.vue'
 
 import util from './util'
-
+VueTouch.config.touchAction='pan-x'
+console.log(VueTouch)
 // =====================安装引入的插件==========================
 Vue.use(VueRouter)
 Vue.use(VueResource)
@@ -20,10 +21,10 @@ Vue.use(Vuex)
 // ======================配置路由===============================
 var router = new VueRouter()
 routerConfig(router)
-Vue.transition('slide', {
-  enterClass: 'slideInLeft',
-  leaveClass: 'hide'
-})
+// Vue.transition('slide', {
+//   enterClass: 'bounceInLeft',
+//   leaveClass: 'bounceOutRight'
+// })
 
 // For every new route scroll to the top of the page
 router.beforeEach(function () {

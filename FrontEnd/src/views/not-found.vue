@@ -1,4 +1,4 @@
-<template>
+w<template>
   <article class="view-404">
   	<header>
   		<span class="error-icon"></span>

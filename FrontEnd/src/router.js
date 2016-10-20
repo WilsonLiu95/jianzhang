@@ -15,6 +15,9 @@ export default function (router) {
     '/record': {
       component: require('_views/record.vue')
     },
+    '/ctype': {
+      component: require('_views/ctype.vue')
+    },
     '404': {
       component: require('_views/not-found.vue')
     }

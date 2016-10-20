@@ -18,8 +18,6 @@
     <keyboard :result.sync="money" :submit="submit"></keyboard>
   </div>
 
-
-
 </template>
 <script>
 import { Group,Calendar,Checker, CheckerItem, XInput, Divider,XHeader} from 'vux/src/components'

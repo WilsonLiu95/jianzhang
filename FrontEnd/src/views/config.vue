@@ -1,12 +1,19 @@
 <template>
-  <div class="animated" transition="slide">
+  <div>
     <x-header :left-options="{showBack: true}" style="linear-gradient(180deg,#303036,#3c3b40)">
       <a slot>设置</a>
     </x-header>
     <div class="main-body">
       <group>
-        <cell title="类别管理" is-link></cell>
+        <cell title="类别管理" is-link link="/ctype"></cell>
         <cell title="账本管理" is-link></cell>
+        <divider>联系我们</divider>
+        <cell title="攻城狮-Wilson"  link="http://wpa.qq.com/msgrd?v=3&uin=527622467&site=qq&menu=yes">
+          <img slot="icon" src="../assets/qq.gif" alt="">
+        </cell>
+        <cell title="设计狮-邓爽"  link="http://wpa.qq.com/msgrd?v=3&uin=1048247193&site=qq&menu=yes">
+          <img slot="icon" src="../assets/qq.gif" alt="">
+        </cell>
       </group>
     </div>
 
@@ -14,14 +21,14 @@
 
 </template>
 <script>
-import { Cell, Group, XHeader} from 'vux/src/components'
+import { Cell, Group, XHeader, Divider} from 'vux/src/components'
 export default {
   data() {
     return {
 
     }
   },
-  components: {XHeader,Cell,Group},
+  components: {XHeader,Cell,Group,Divider},
   computed:{
 
   },
