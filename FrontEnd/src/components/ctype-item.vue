@@ -47,9 +47,7 @@
         this.currentIndex = -1
       },
       ctypeLeft (_index){
-        debugger
 //        event.preventDefault();
-//        event.stopPropagation()
         if (!this.isTouchSwipe) {
           this.isTouchSwipe = true
           this.currentIndex = _index

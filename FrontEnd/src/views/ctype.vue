@@ -5,8 +5,10 @@
       <a slot="right" class="add-ctype" style="transform: scale(2);" v-touch:tap="changeisShow" >+</a>
     </x-header>
     <div class="main-body">
+      <!--<scroller lock-x scrollbar-y	>-->
       <ctype-item :list="ctype" :tap="modifyCtype" :remove="removeCtype" >
       </ctype-item>
+      <!--</scroller>-->
     </div>
     <confirm :show.sync="isShow" title="新增" confirm-text="确认" cancel-text="取消" @on-confirm="confimCtype">
       <group>
@@ -17,7 +19,7 @@
   </div>
 </template>
 <script>
-  import {XHeader,Group,Alert,Confirm,Switch,XInput} from 'vux/src/components'
+  import {XHeader,Group,Alert,Confirm,Scroller,Switch,XInput} from 'vux/src/components'
   import getters from '_vuex/getters'
   import actions from '_vuex/actions'
   import ctypeItem from '_comp/ctype-item'
@@ -32,7 +34,7 @@
       }
     },
     components: {
-      XHeader,Group,Confirm,Switch,XInput,Alert,ctypeItem
+      XHeader,Group,Confirm,Switch,XInput,Alert,ctypeItem,Scroller
     },
     vuex: {
       getters,actions
