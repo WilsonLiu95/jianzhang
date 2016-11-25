@@ -1,6 +1,5 @@
 <template>
   <ul class="ctype-list">
-
     <li class="ctype-item" v-for="(index, item) in list" track-by="$index"  @touchmove="move(index)"  @touchend="end(index)" >
       <div class="ctype-item-main" @touchstart="touchstart($index)"  v-touch:swipeleft="ctypeLeft($index)" v-touch:tap="ctypetap(index)" :class="{'current':currentIndex==$index}">
         <span>{{item.custom_type}}</span>

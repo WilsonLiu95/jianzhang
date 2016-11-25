@@ -5,10 +5,10 @@
       <a slot="right" class="add-ctype" style="transform: scale(2);" v-touch:tap="changeisShow" >+</a>
     </x-header>
     <div class="main-body">
-      <!--<scroller lock-x scrollbar-y	>-->
+      <scroller lock-x class="ctype-list" height="600px">
       <ctype-item :list="ctype" :tap="modifyCtype" :remove="removeCtype" >
       </ctype-item>
-      <!--</scroller>-->
+      </scroller>
     </div>
     <confirm :show.sync="isShow" title="新增" confirm-text="确认" cancel-text="取消" @on-confirm="confimCtype">
       <group>
@@ -81,6 +81,5 @@
 
 </script>
 <style>
-
 
 </style>

@@ -3,17 +3,19 @@
 		<x-header :left-options="{showBack: false}" style="linear-gradient(180deg,#303036,#3c3b40)">
 			<a slot="left" v-link="'/config'" class="header-left"></a>
 			<a slot @click="showActionsheet">当前账本: {{currentbook}}</a>
+      <a slot="right" v-link="'/record'" class="header-right" style="transform:scale(2)">+</a>
 		</x-header>
 		<div class="main-body">
 			<date-note :bill_array="bill_array" :select="select_date">
 			</date-note>
-			<!--<scroller class="scroll" :pulldown-config="{content:'下拉记账',downContent:'下拉前往记账',upContent:'释放跳转记账'}" @pulldown:loading="loadTop" height="400px"-->
-				<!--lock-x  >-->
-      <div class="note-card-container animated" @touchstart="start" @touchmove="move" @touchend="end" style="height: 400px;position: relative" v-touch:swipedown="loadTop">
+
+
+        <scroller :pulldown-config="{content:'下拉记账',downContent:'下拉前往记账',upContent:'释放跳转记账',scrollbarY:'true'}"
+          @pulldown:loading="loadTop"  height="520px"  lock-x  use-pulldown bounce 	 >
         <swipe-item  class="note-card" :list="notelist" :tap="modifyNote" :remove="removeRecord">
         </swipe-item>
-      </div>
-			<!--</scroller>-->
+        </scroller>
+
 		</div>
    <toast :show="changeNB" type="text">新的一月到来咯</toast>
 	</div>
@@ -29,6 +31,7 @@ import dateNote from '_comp/date-note'
 import getters from '_vuex/getters'
 import actions from '_vuex/actions'
 import swipeItem from '_comp/swipe-item'
+
 var touchparam = {
 
 }
@@ -85,6 +88,7 @@ export default {
       this.changeNB = true
     }
   },
+
   methods: {
     showActionsheet: function(e){
         this.sheetVisible = true
@@ -92,28 +96,8 @@ export default {
     selectNotebook(key, value) {
       this.$store.dispatch("MODIFYCURRENTNOTEBOOK", {select:key})
     },
-    loadTop: function(){
-      setTimeout(function () {
-        location.href = "./#!/record"
-      },200)
-    },
-    start: function () {
-      touchparam.top = event.changedTouches[0].clientY
-    },
-    move: function () {
-      var gap = event.changedTouches[0].clientY - touchparam.top
-      if (gap > 0){
-//        debugger
-        document.getElementsByClassName("note-card-container")[0].style.top = gap+ "px"
-      }
-
-    },
-    end:function () {
-      document.getElementsByClassName("note-card-container")[0].classList.add("trans")
-      document.getElementsByClassName("note-card-container")[0].style.top = 0
-      setTimeout(function () {
-        document.getElementsByClassName("note-card-container")[0].classList.remove("trans")
-      },100)
+    loadTop() {
+      location.href = "./#!/record"
     },
     removeRecord: function(index){
       var option = {}
@@ -168,4 +152,5 @@ function addNB(vue) {
    .trans {
     transition:  0.1s ease;
   }
+
 </style>
