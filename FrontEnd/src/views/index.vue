@@ -1,8 +1,8 @@
 <template>
 	<div>
-		<x-header id="_header" :left-options="{showBack: false}" >
+		<x-header id="_header" :left-options="{showBack: false}" style="padding-top: 0" >
 			<a slot="left" v-link="'/config'" class="header-left"></a>
-			<a slot @click="showActionsheet" style="font-size:21px; font-weight:200">
+			<a slot @click="showActionsheet" style="font-size:21px; font-weight:200; ">
         当前账本: {{currentbook}}
       </a>
 		</x-header>
@@ -160,15 +160,8 @@ function addNB(vue) {
    .trans {
     transition:  0.1s ease;
   }
-  #_header {
-    height: 62px;
-    background:linear-gradient(180deg,#B6977B, #AD8F75);
-  }
-   .header-left {
-    margin-top: 6px;
-  }
   .input-output {
-    position: absolute;
+    position: fixed;
     z-index: 10;
     top:33px;
     width: 100%;
@@ -179,7 +172,7 @@ function addNB(vue) {
     font-weight:100;
   }
   .date-note {
-    /*background-color: #F4F6F1;*/
+    margin: 18px 0 18px 0;
   }
 </style>
 

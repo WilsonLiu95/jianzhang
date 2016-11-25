@@ -26,7 +26,7 @@ export default {
     }},
  computed: {
       getDay (){
-        return this.bill_array.length * 75
+        return this.bill_array.length * 85
       }
     },
     methods: {
@@ -107,12 +107,12 @@ function bindEvent(that){
     border: 1px solid #ADC0D2;
     background-color: #fafafa;
     font-size: 14px;
+    margin: 0 2.5px 0 2.5px;
     overflow: hidden;
     text-align: center;
   }
   #scroller li h5{
     color:#ADC0D2;
-    font-weight: 100;
   }
   #scroller li.highlight {
     background: #A1B7CC;

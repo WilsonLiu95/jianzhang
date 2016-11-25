@@ -72,7 +72,7 @@ export default {
     bottom: 0;
     width: 100%;
     height: 190px;
-    background-color: rgb(255, 255, 255);
+    background-color: #F4F6F1;
   }
 
   .keyboard-wrapper table {
@@ -83,7 +83,7 @@ export default {
     border-top: 1px solid #CECDCE;
     border-collapse: collapse;
     border-spacing: 0;
-    background-color: #FFF;
+    background-color: #F4F6F1;
   }
 
   .keyboard-wrapper td {

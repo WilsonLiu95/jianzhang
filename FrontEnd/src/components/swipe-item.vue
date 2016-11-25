@@ -1,10 +1,14 @@
 <template>
   <ul class="swipe-list">
-    <li class="swipe-item" v-for="(index, item) in list" track-by="$index"
-      v-if="item.state" v-touch:swipeleft="swipeLeft($index)" >
-      <div class="swipe-item-main" @touchstart="touchstart($index)"  v-touch:tap="swipetap(index)" :class="{'current':currentIndex==$index}">
-        <span>{{item.custom_type}}</span>
-        <span class="">{{item.record_type ==="支出" ? "-" : "+"}} {{item.money.toFixed(2)}}</span>
+    <li class="swipe-item" v-for="(index, item) in list" track-by="$index" v-if="item.state" v-touch:swipeleft="swipeLeft($index)">
+      <div class="swipe-item-main" @touchstart="touchstart($index)" v-touch:tap="swipetap(index)" :class="{'current':currentIndex==$index}">
+        <div class="custom-type">
+          <span>{{item.custom_type}}</span>
+          <br>
+          <span style="margin-left:20px;font-size:13px;color:#5F5F5F;">{{item.comment}}</span>
+        </div>
+
+        <div class="item-money">{{item.record_type ==="支出" ? "-" : "+"}} {{item.money.toFixed(2)}}</div>
       </div>
       <div class="swipe-item-right">
         <div v-touch:tap="remove(index)" class="swipe-item-del">删除</div>
@@ -63,17 +67,19 @@ export default {
     position: relative;
     height: 64px;
   }
+
   .current {
-    transform: translate3d(-60px,0,0);
-    -webkit-transform: translate3d(-60px,0,0);
+    transform: translate3d(-60px, 0, 0);
+    -webkit-transform: translate3d(-60px, 0, 0);
   }
+
   .swipe-item-main {
     position: relative;
     left: 0;
     width: 100%;
-    padding: 8px;
+    padding: 10px 14px 10px 14px;
     z-index: 2;
-    background-color: #fff;
+    background-color: #F4F6F1;
     height: 100%;
     transition: transform .1s linear;
   }
@@ -130,5 +136,29 @@ export default {
     -webkit-transform-origin: 0 0;
     background-color: #b7b7b7;
     height: 1px;
+  }
+
+  .custom-type {
+    display: inline-block;
+    width: 60%;
+    font-size: 15px;
+    line-height: 14px;
+  }
+
+  .item-money {
+    float: right;
+    display: inline-block;
+    font-size: 27px;
+    font-weight: 300;
+  }
+
+  .custom-type::before {
+    content: "";
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-right: 5px;
+    background-color: #BBB4D6;
+    border-radius: 5px;
   }
 </style>

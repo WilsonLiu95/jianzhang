@@ -69,7 +69,7 @@
           return false
         }
         var el = event.target.parentElement.parentElement
-//        event.preventDefault();
+        event.preventDefault();
         if (touchparam.movetop){
           el.style.top = event.changedTouches[0].clientY - touchparam.movetop + 'px'
         }
@@ -116,7 +116,7 @@
     width: 100%;
     padding: 8px;
     z-index: 2;
-    background-color: #fff;
+    background-color: #F4F6F1;
     height: 100%;
     transition: transform .1s linear;
   }

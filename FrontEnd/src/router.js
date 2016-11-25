@@ -1,6 +1,6 @@
 export default function (router) {
   router.redirect({
-    '/': '/index'
+    '/': '/record'
   })
   router.map({
     '/index': {

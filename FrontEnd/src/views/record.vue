@@ -1,7 +1,7 @@
 <template>
   <div>
-    <x-header  :left-options="{showBack: true}">
-      <a slot >记一笔</a>
+    <x-header :left-options="{showBack: true}">
+      <a slot>记一笔</a>
     </x-header>
     <div class="main-body">
       <group>
@@ -122,6 +122,14 @@ export default {
 
 </script>
 <style>
+  .weui_cells {
+    background-color: #F4F6F1;
+  }
+
+  .inline-calendar {
+    background-color: #F4F6F1
+  }
+
   @import '~vux/dist/vux.css';
   .checker-popup {
     background: rgba(255, 255, 255, 0.5);
@@ -134,10 +142,12 @@ export default {
   }
 
   .customtype-item {
-    width: 50px;
+    width: 60px;
+    height: 30px;
     text-align: center;
     font-size: 14px;
     border: 1px solid #ececec;
+    border-radius: 5px;
     overflow-x: auto;
     white-space: nowrap;
     margin: 1px 2px;
@@ -145,7 +155,6 @@ export default {
   }
 
   .customtype-item-selected {
-    border-radius: 4px;
     background-color: #1FB9FF;
     color: #FFF;
   }

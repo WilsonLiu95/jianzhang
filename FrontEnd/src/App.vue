@@ -38,22 +38,17 @@ import store from './vuex/index'
 </script>
 
 <style>
+  /* 初始化 */
+
   * {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
   }
-.vux-header {
-  -webkit-touch-callout:none;
-  -webkit-user-select:none;
-  -khtml-user-select:none;
-  -moz-user-select:none;
-  -ms-user-select:none;
-  user-select:none;
-}
+
   html,
   body,
-  #app{
+  #app {
     height: 100%;
     background-color: #F4F6F1;
   }
@@ -65,17 +60,10 @@ import store from './vuex/index'
     margin: 0;
     border: 0;
   }
-  #app > div:first-child {
-    height:100%;
-  }
-  #app .vux-header {
-    width:100%;
-    position: fixed;
-    z-index: 10;
-  }
+
   .main-body {
     height: 100%;
-    padding-top:62px;
+    padding-top: 62px;
   }
 
   .left {
@@ -88,5 +76,42 @@ import store from './vuex/index'
 
   .hide {
     display: none;
+  }
+  /* 公共组件 */
+
+  #app > div:first-child {
+    height: 100%;
+  }
+
+  .vux-header {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  #app .vux-header {
+    width: 100%;
+    position: fixed;
+    z-index: 10;
+    height: 62px;
+    background: linear-gradient(180deg, #B6977B, #AD8F75);
+  }
+
+  .vux-header .vux-header-left {
+    margin-top: 6px;
+    font-weight: 500
+  }
+
+  #app .vux-header {
+    padding-top: 12px;
+  }
+  #app .vux-header h1 {
+    font-size: 24px;
+  }
+  #app .vux-header .vux-header-left .vux-header-back:before {
+    border-width: 3px 0 0 3px ;
   }
 </style>
