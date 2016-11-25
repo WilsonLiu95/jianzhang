@@ -1,12 +1,16 @@
 <template>
 	<div>
-		<x-header :left-options="{showBack: false}" style="linear-gradient(180deg,#303036,#3c3b40)">
+		<x-header id="_header" :left-options="{showBack: false}" >
 			<a slot="left" v-link="'/config'" class="header-left"></a>
-			<a slot @click="showActionsheet">当前账本: {{currentbook}}</a>
-      <a slot="right" v-link="'/record'" class="header-right" style="transform:scale(2)">+</a>
+			<a slot @click="showActionsheet" style="font-size:21px; font-weight:200">
+        当前账本: {{currentbook}}
+      </a>
 		</x-header>
+    <div class="input-output">
+            收入:{{notebook.income.toFixed(2)}} 支出:{{notebook.payout.toFixed(2)}}
+    </div>
 		<div class="main-body">
-			<date-note :bill_array="bill_array" :select="select_date">
+			<date-note class="date-note" :bill_array="bill_array" :select="select_date">
 			</date-note>
 
 
@@ -57,7 +61,6 @@ export default {
   },
   computed: {
     currentbook: function(){
-
       var state = this.$store.state
       return state.notebook[state.current_notebook].note_book_name
     },
@@ -71,6 +74,10 @@ export default {
         arr[index] = val.note_book_name
       })
       return arr
+    },
+    notebook: function(){
+      var state = this.$store.state
+      return state.notebook[state.current_notebook]
     }
   },
   ready(){
@@ -147,10 +154,32 @@ function addNB(vue) {
 <style>
 	.header-left:before {
 		content: "\2022\0020\2022\0020\2022\0020";
-		font-size: 16px
+		font-size: 16px;
+    color:#F4F6F1
 	}
    .trans {
     transition:  0.1s ease;
   }
-
+  #_header {
+    height: 62px;
+    background:linear-gradient(180deg,#B6977B, #AD8F75);
+  }
+   .header-left {
+    margin-top: 6px;
+  }
+  .input-output {
+    position: absolute;
+    z-index: 10;
+    top:33px;
+    width: 100%;
+    height: 10px;
+    text-align: center;
+    color: #FFF;
+    font-size: 10px;
+    font-weight:100;
+  }
+  .date-note {
+    /*background-color: #F4F6F1;*/
+  }
 </style>
+

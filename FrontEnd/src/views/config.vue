@@ -1,6 +1,6 @@
 <template>
   <div>
-    <x-header :left-options="{showBack: true}" style="linear-gradient(180deg,#303036,#3c3b40)">
+    <x-header :left-options="{showBack: true}">
       <a slot>设置</a>
     </x-header>
     <div class="main-body">

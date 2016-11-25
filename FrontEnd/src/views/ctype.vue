@@ -1,6 +1,6 @@
 <template xmlns:v-touch="http://www.w3.org/1999/xhtml">
   <div>
-    <x-header :left-options="{showBack: true}" style="linear-gradient(180deg,#303036,#3c3b40)">
+    <x-header :left-options="{showBack: true}">
       <a slot>类别修改</a>
       <a slot="right" class="add-ctype" style="transform: scale(2);" v-touch:tap="changeisShow" >+</a>
     </x-header>

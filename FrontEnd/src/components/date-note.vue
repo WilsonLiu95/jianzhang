@@ -65,9 +65,8 @@ function bindEvent(that){
   #wrapper {
     position: relative;
     z-index: 1;
-    height: 75px;
+    height: 80px;
     width: 100%;
-    background: #ccc;
     overflow: hidden;
     -ms-touch-action: none;
   }
@@ -102,20 +101,32 @@ function bindEvent(that){
   }
 
   #scroller li {
-    width: 75px;
-    height: 75px;
+    width: 80px;
+    height: 80px;
     float: left;
-    border-right: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
+    border: 1px solid #ADC0D2;
     background-color: #fafafa;
     font-size: 14px;
     overflow: hidden;
     text-align: center;
   }
-
-  #scroller li.highlight {
-    background: #ccc;
+  #scroller li h5{
+    color:#ADC0D2;
+    font-weight: 100;
   }
+  #scroller li.highlight {
+    background: #A1B7CC;
+  }
+  #scroller li.highlight h5 {
+    color: #FFF;
+  }
+  #scroller li span{
+    color:#5F5F5F;
+  }
+  #scroller li.highlight span{
+    color:#000;
+  }
+
   .date-note-item {
     border-radius: 75px;
   }

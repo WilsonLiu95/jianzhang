@@ -55,6 +55,7 @@ import store from './vuex/index'
   body,
   #app{
     height: 100%;
+    background-color: #F4F6F1;
   }
 
   body,
@@ -74,7 +75,7 @@ import store from './vuex/index'
   }
   .main-body {
     height: 100%;
-    padding-top:46px;
+    padding-top:62px;
   }
 
   .left {
