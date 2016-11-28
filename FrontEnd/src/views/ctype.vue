@@ -2,7 +2,7 @@
   <div>
     <x-header :left-options="{showBack: true}">
       <a slot>类别修改</a>
-      <a slot="right" class="add-ctype" style="transform: scale(2);" v-touch:tap="changeisShow" >+</a>
+      <a slot="right" class="add-ctype" style="font-size:35px; margin-top:3px" v-touch:tap="changeisShow" >+</a>
     </x-header>
     <div class="main-body">
       <scroller lock-x class="ctype-list" height="500px">

@@ -2,7 +2,7 @@
 	<div>
 		<x-header id="_header" :left-options="{showBack: false}" style="padding-top: 0" >
 			<a slot="left" v-link="'/config'" class="header-left"></a>
-			<a slot @click="showActionsheet" style="font-size:21px; font-weight:200; ">
+			<a slot @click="showActionsheet" style="font-size:21px; font-weight:200; margin-top:5px;">
         当前账本: {{currentbook}}
       </a>
 		</x-header>
@@ -162,7 +162,7 @@ function addNB(vue) {
 <style>
 	.header-left:before {
 		content: "\2022\0020\2022\0020\2022\0020";
-		font-size: 16px;
+		font-size: 14px;
     color:#F4F6F1
 	}
    .trans {
@@ -181,6 +181,9 @@ function addNB(vue) {
   }
   .date-note {
     margin: 18px 0 18px 0;
+  }
+  #app .vux-header-title {
+    margin-top: 3px;
   }
 </style>
 
