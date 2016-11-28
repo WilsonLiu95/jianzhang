@@ -97,9 +97,22 @@ import store from './vuex/index'
     position: fixed;
     z-index: 10;
     height: 62px;
-    background: linear-gradient(180deg, #B6977B, #AD8F75);
-  }
+    /*background: linear-gradient(180deg, #B6977B, #AD8F75);*/
+    background-color: #A68A70;
 
+  }
+  #app .vux-header::after {
+    content: "";
+    z-index: 5;
+    display: block;
+    height: 10px;
+    background-image: url(./assets/bolang.jpeg);
+    background-size:35px 7px;
+    opacity: 1;
+    background-repeat: repeat-x;
+    background-position:bottom;
+
+  }
   .vux-header .vux-header-left {
     margin-top: 6px;
     font-weight: 500

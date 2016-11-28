@@ -160,6 +160,9 @@ function addNB(vue) {
 }
 </script>
 <style>
+ #app #_header::after {
+   height: 20px
+ }
 	.header-left:before {
 		content: "\2022\0020\2022\0020\2022\0020";
 		font-size: 14px;
