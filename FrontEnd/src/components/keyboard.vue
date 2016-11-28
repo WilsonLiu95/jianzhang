@@ -94,7 +94,7 @@ export default {
     padding: 0;
   }
   .keyboard-wrapper td:active {
-    background-color: #1FB9FF;
+    background-color: #A1B7CC;
     color: #FFF;
   }
   @media (max-height: 490px) {

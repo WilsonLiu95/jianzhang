@@ -22,5 +22,8 @@ export default {
   },
   user: function(state){
     return state.user
+  },
+  is_start_record: function(state){
+    return state.user.is_start_record
   }
 }

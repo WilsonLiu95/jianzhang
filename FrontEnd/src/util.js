@@ -102,6 +102,11 @@ function init(callback) {
     account: "wilsonliuxyz@gmail.com",
     uid: "7123818af58c015a34b78652f5fb90d7e304a2d825656542733725147fcfc735",
     bkg_img: "http://wilsonliu.cn/cdn/bkg_img.png", // 预留字段
+    head_url: "http://wilsonliu.cn/cdn/wilsonliuhead.png", // 预留字段
+    is_start_record: true,
+    age: 20, // 预留字段
+    jobs: "学生", // 预留字段
+    address: "湖北武汉", // 预留字段
     custom_type_conf: [{
       custom_type: "用餐", // 自定义类型
       record_type: "支出", // 记录类型
@@ -133,11 +138,7 @@ function init(callback) {
       custom_type: "娱乐2", // 自定义类型
       record_type: "支出", // 记录类型
     }
-    ],
-    head_url: "http://wilsonliu.cn/cdn/wilsonliuhead.png", // 预留字段
-    age: 20, // 预留字段
-    jobs: "学生", // 预留字段
-    address: "湖北武汉" // 预留字段
+    ]
   }
   localStorage.all_record ? null : localStorage.setItem(types.RECORD, JSON.stringify(all_record))
   localStorage.user ? null : localStorage.setItem(types.USER, JSON.stringify(user))

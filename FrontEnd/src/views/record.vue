@@ -1,6 +1,6 @@
 <template>
   <div>
-    <x-header :left-options="{showBack: true}">
+    <x-header :left-options="{showBack: true, preventGoBack: true}" @on-click-back="click_back"	>
       <a slot>记一笔</a>
     </x-header>
     <div class="main-body">
@@ -68,6 +68,10 @@ export default {
     }
   },
   methods: {
+    click_back: function(){
+      // 重定向到主页
+      location.href = "./#!/index?hasJumpRecord=true"
+    },
     submit: function(){
       // 获取基本信息
       var all_record = this.$store.state.record
@@ -114,7 +118,7 @@ export default {
         this.makenote(newRecord)
       }
       // 重定向到主页
-      location.href = "./#!/index"
+      location.href = "./#!/index?hasJumpRecord=true"
     }
   }
 }
@@ -155,7 +159,7 @@ export default {
   }
 
   .customtype-item-selected {
-    background-color: #1FB9FF;
+    background-color: #A1B7CC;
     color: #FFF;
   }
 

@@ -43,7 +43,7 @@ export default {
   data: function () {
     return {
       sheetVisible: false,
-      changeNB: false
+      changeNB: false,
     }
   },
   components: {
@@ -93,6 +93,10 @@ export default {
       addNB(this)
       this.$store.state.current_notebook = nb.length - 1;
       this.changeNB = true
+    }
+    // debugger
+    if(!util.getSearch().hasJumpRecord && this.$store.state.user.is_start_record){
+      location.href = "./#!/record?hasJumpRecord=true"
     }
   },
 

@@ -5,7 +5,7 @@
         <div class="custom-type">
           <span>{{item.custom_type}}</span>
           <br>
-          <span style="margin-left:20px;font-size:13px;color:#5F5F5F;">{{item.comment}}</span>
+          <div style="margin-left:20px;margin-top: 8px;font-size:13px;color:#5F5F5F;">{{item.comment}}</div>
         </div>
 
         <div class="item-money">{{item.record_type ==="支出" ? "-" : "+"}} {{item.money.toFixed(2)}}</div>
