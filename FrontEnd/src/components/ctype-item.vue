@@ -1,10 +1,10 @@
 <template>
   <ul class="ctype-list">
-    <li class="ctype-item" v-for="(index, item) in list" track-by="$index"  @touchmove="move(index)"  @touchend="end(index)" >
+    <li class="ctype-item" v-for="(index, item) in list" track-by="$index"   >
       <div class="ctype-item-main" @touchstart="touchstart($index)"  v-touch:swipeleft="ctypeLeft($index)" v-touch:tap="ctypetap(index)" :class="{'current':currentIndex==$index}">
         <span>{{item.custom_type}}</span>
-        <span>{{item.record_type}}</span>
-        <span class="drag-btn">==</span>
+        <span style="float:right;font-size:12px">{{item.record_type}}</span>
+        <!--<span class="drag-btn">==</span>-->
       </div>
       <div class="ctype-item-right">
         <div v-touch:tap="_remove(index)" class="ctype-item-del">删除</div>
@@ -64,36 +64,36 @@
         }
         this.isTouchSwipe = false
       },
-      move: function (index) {
-        if (event.target.className.indexOf("drag-btn") === -1){
-          return false
-        }
-        var el = event.target.parentElement.parentElement
-        event.preventDefault();
-        if (touchparam.movetop){
-          el.style.top = event.changedTouches[0].clientY - touchparam.movetop + 'px'
-        }
-        el.style.zIndex = 20
-        if (!touchparam.isDrag) {
-          touchparam.isDrag = true
-          touchparam.eltop = el.offsetTop
-          touchparam.movetop = event.changedTouches[0].clientY
-        }
-      },
-      end: function (index) {
-        if (event.target.className.indexOf("drag-btn") === -1){
-          return false
-        }
-        var el = event.target.parentElement.parentElement
-        el.style.zIndex = 2
-        touchparam = {isDrag: false}
-        var _a = parseInt(el.style.top, 10) / 64
-        var a = _a < 0 ? Math.ceil(_a)+1 : Math.ceil(_a)
-        var target =  this.list.splice(index, 1)
-        el.style.top = 0
-        this.list.splice(index + a -1, 0, target[0])
-        this.$store.dispatch("USER",{user: this.$parent.user})
-      },
+      // move: function (index) {
+      //   if (event.target.className.indexOf("drag-btn") === -1){
+      //     return false
+      //   }
+      //   var el = event.target.parentElement.parentElement
+      //   // event.preventDefault();
+      //   if (touchparam.movetop){
+      //     el.style.top = event.changedTouches[0].clientY - touchparam.movetop + 'px'
+      //   }
+      //   el.style.zIndex = 20
+      //   if (!touchparam.isDrag) {
+      //     touchparam.isDrag = true
+      //     touchparam.eltop = el.offsetTop
+      //     touchparam.movetop = event.changedTouches[0].clientY
+      //   }
+      // },
+      // end: function (index) {
+      //   if (event.target.className.indexOf("drag-btn") === -1){
+      //     return false
+      //   }
+      //   var el = event.target.parentElement.parentElement
+      //   el.style.zIndex = 2
+      //   touchparam = {isDrag: false}
+      //   var _a = parseInt(el.style.top, 10) / 64
+      //   var a = _a < 0 ? Math.ceil(_a)+1 : Math.ceil(_a)
+      //   var target =  this.list.splice(index, 1)
+      //   el.style.top = 0
+      //   this.list.splice(index + a -1, 0, target[0])
+      //   this.$store.dispatch("USER",{user: this.$parent.user})
+      // },
 
     }}
 
@@ -174,8 +174,8 @@
     background-color: #b7b7b7;
     height: 1px;
   }
-  .drag-btn {
+  /*.drag-btn {
     float:right;
     width:60px;
-  }
+  }*/
 </style>

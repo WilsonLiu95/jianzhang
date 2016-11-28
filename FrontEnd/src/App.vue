@@ -108,10 +108,12 @@ import store from './vuex/index'
   #app .vux-header {
     padding-top: 12px;
   }
+
   #app .vux-header h1 {
     font-size: 24px;
   }
+
   #app .vux-header .vux-header-left .vux-header-back:before {
-    border-width: 3px 0 0 3px ;
+    border-width: 3px 0 0 3px;
   }
 </style>
