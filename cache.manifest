@@ -4,16 +4,18 @@ CACHE MANIFEST
 
 # 直接缓存的文件
 CACHE:
-wilsonliu.cn/account_note/FrontEnd/dist/static/js/0.05b94b767642f5d88548.js.map
+
 wilsonliu.cn/account_note/FrontEnd/dist/static/js/0.05b94b767642f5d88548.js
 wilsonliu.cn/account_note/FrontEnd/dist/static/js/app.3573625fab66e27b11b1.js
 wilsonliu.cn/account_note/FrontEnd/dist/static/js/vendor.d0de09056a59f07945aa.js
 wilsonliu.cn/account_note/FrontEnd/dist/static/css/app.88898c4fe6abdf71d78194f4f3e9028d.css
 wilsonliu.cn/account_note/FrontEnd/dist/static/js/manifest.1aca42b932c20481f015.js
-wilsonliu.cn/account_note/FrontEnd/dist/static/js/manifest.1aca42b932c20481f015.js.map
-wilsonliu.cn/account_note/FrontEnd/dist/static/js/app.3573625fab66e27b11b1.js.map
-wilsonliu.cn/account_note/FrontEnd/dist/static/css/app.88898c4fe6abdf71d78194f4f3e9028d.css.map
-wilsonliu.cn/account_note/FrontEnd/dist/static/js/vendor.d0de09056a59f07945aa.js.map
+
+#wilsonliu.cn/account_note/FrontEnd/dist/static/js/0.05b94b767642f5d88548.js.map
+#wilsonliu.cn/account_note/FrontEnd/dist/static/js/manifest.1aca42b932c20481f015.js.map
+#wilsonliu.cn/account_note/FrontEnd/dist/static/js/app.3573625fab66e27b11b1.js.map
+#wilsonliu.cn/account_note/FrontEnd/dist/static/css/app.88898c4fe6abdf71d78194f4f3e9028d.css.map
+#wilsonliu.cn/account_note/FrontEnd/dist/static/js/vendor.d0de09056a59f07945aa.js.map
 
 # 需要在线访问的文件
 NETWORK:
