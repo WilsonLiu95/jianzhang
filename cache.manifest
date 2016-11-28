@@ -17,7 +17,7 @@ wilsonliu.cn/account_note/FrontEnd/dist/static/js/vendor.d0de09056a59f07945aa.js
 
 # 需要在线访问的文件
 NETWORK:
-
+*
 # 替代方案
 FALLBACK:
 
