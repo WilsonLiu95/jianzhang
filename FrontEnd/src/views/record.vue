@@ -125,7 +125,11 @@ export default {
         this.makenote(newRecord)
       }
       // 重定向到主页
-      location.href = "./#!/index?hasJumpRecord=true"
+      if(util.getSearch().hasJumpRecord){
+        location.href = "./#!/index?hasJumpRecord=true"
+      } else {
+        location.href = "./#!/index"
+      }
     }
   }
 }

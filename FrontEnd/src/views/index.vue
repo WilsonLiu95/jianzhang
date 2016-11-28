@@ -108,7 +108,11 @@ export default {
       this.$store.dispatch("MODIFYCURRENTNOTEBOOK", {select:key})
     },
     loadTop() {
-      location.href = "./#!/record"
+      if(util.getSearch().hasJumpRecord){
+        location.href = "./#!/record?hasJumpRecord=true"
+      } else {
+        location.href = "./#!/record"
+      }
     },
     removeRecord: function(index){
       var option = {}

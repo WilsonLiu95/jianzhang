@@ -40,7 +40,6 @@ export default {
   },
   methods: {
     change: function(){
-      debugger
       this.user.is_start_record = !this.user.is_start_record
         this.$store.dispatch("USER",{user: this.user})
     }
