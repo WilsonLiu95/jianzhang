@@ -97,7 +97,6 @@ import store from './vuex/index'
     position: fixed;
     z-index: 10;
     height: 62px;
-    /*background: linear-gradient(180deg, #B6977B, #AD8F75);*/
     background-color: #A68A70;
 
   }
@@ -115,7 +114,13 @@ import store from './vuex/index'
   }
   .vux-header .vux-header-left {
     margin-top: 6px;
-    font-weight: 500
+    height: 40px;
+    font-weight: 500;
+  }
+  .vux-header .vux-header-left .vux-header-back {
+    display: block;
+    width: 30px;
+    height: 30px;
   }
 
   #app .vux-header {
