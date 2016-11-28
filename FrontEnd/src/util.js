@@ -103,7 +103,7 @@ function init(callback) {
     uid: "7123818af58c015a34b78652f5fb90d7e304a2d825656542733725147fcfc735",
     bkg_img: "http://wilsonliu.cn/cdn/bkg_img.png", // 预留字段
     head_url: "http://wilsonliu.cn/cdn/wilsonliuhead.png", // 预留字段
-    is_start_record: true,
+    is_start_record: false,
     age: 20, // 预留字段
     jobs: "学生", // 预留字段
     address: "湖北武汉", // 预留字段

@@ -1,8 +1,11 @@
 export default function (router) {
-  router.redirect({
-    '/': '/index'
-  })
+  // router.redirect({
+  //   '/': '/index'
+  // })
   router.map({
+    '/': {
+      component: require('_views/index.vue')
+    },
     '/index': {
       component: require('_views/index.vue')
     },
@@ -21,7 +24,6 @@ export default function (router) {
     '404': {
       component: require('_views/not-found.vue')
     }
-
   })
   // If no route is matched redirect home
   router.redirect({

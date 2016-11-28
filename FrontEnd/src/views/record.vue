@@ -73,7 +73,11 @@ export default {
   methods: {
     click_back: function(){
       // 重定向到主页
-      location.href = "./#!/index?hasJumpRecord=true"
+      if(util.getSearch().hasJumpRecord){
+        location.href = "./#!/index?hasJumpRecord=true"
+      } else {
+        location.href = "./#!/index"
+      }
     },
     submit: function(){
       // 获取基本信息
