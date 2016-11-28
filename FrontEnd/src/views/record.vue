@@ -1,6 +1,6 @@
 <template>
   <div>
-    <x-header :left-options="{showBack: true, preventGoBack: true}" @on-click-back="click_back"	>
+    <x-header :left-options="{showBack: true, preventGoBack: true}" @on-click-back="click_back">
       <a slot>记一笔</a>
     </x-header>
     <div class="main-body">
@@ -10,7 +10,10 @@
         <x-input title="金额" placeholder="10.20" :value.sync="money" :readonly=true></x-input>
 
         <checker :value.sync="custom_type_idx" default-item-class="customtype-item" selected-item-class="customtype-item-selected">
-          <checker-item v-for="item in user.custom_type_conf" :value="$index">{{item.custom_type}}</checker-item>
+          <checker-item v-for="item in user.custom_type_conf" :value="$index">
+            <span v-if="item.record_type == '收入'" style="color:#B6977B;">+</span>
+            {{item.custom_type}}
+            </checker-item>
         </checker>
         <divider></divider>
       </group>
