@@ -10,10 +10,11 @@ export default function (router) {
       component: require('_views/index.vue')
     },
     '/config': {
-      component: function (resolve) {
-        // somehow retrieve your component definition from server...
-        require(['_views/config.vue'], resolve)
-      }
+      // component: function (resolve) {
+      //   // somehow retrieve your component definition from server...
+      //   require(['_views/config.vue'], resolve)
+      // }
+      component: require('_views/config.vue')
     },
     '/record': {
       component: require('_views/record.vue')
