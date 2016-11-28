@@ -15,22 +15,13 @@
 
 ## 技术栈
 ### 前端
-框架主要采用Vue.js辅助以vue-router,vue-resources,Vuex等插件，构建采用Vue-cli，使用了webpack与babel。采用sass编写
-样式，同时利用饿了么的mint-u这套组件库。
+框架主要采用Vue.js辅助以vue-router,vue-resources,Vuex等插件，构建采用Vue-cli，使用了webpack与babel，同时利用VUX这套组件库。
 
-插件列表
-- iScroll.js
 ### 后端
 采用node.js的express框架，接口采用Restful的理念。数据库初定mysql。采用sequelize这个ORM工具操作mysql。
 
-
-
-## 流程规划
-cd
-
-## 项目信息
-### 待确认
-
+懒！！！
+放弃实现
 
 ### 制作团队
 - WilsonLiu 前后端开发负责人
@@ -43,7 +34,6 @@ cd
 4. 2016-09-10 - 2016-10-10 前端页面功能基本实现
 5. 2016-09-11  前端页面重新设计 by 邓爽
 6. 2016-11-28 完成首版
-
 
 ## 结语
 一个人做东西就是容易拖拖拉拉，遇到技术细节也很容易卡节奏。
