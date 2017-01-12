@@ -1,4 +1,4 @@
-w
+
 <template>
   <article class="view-404">
     <header>

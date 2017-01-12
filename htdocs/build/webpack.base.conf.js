@@ -20,8 +20,7 @@ module.exports = {
       '_assets': path.resolve(__dirname, '../src/assets'),
       '_comp': path.resolve(__dirname, '../src/components'),
       '_vuex': path.resolve(__dirname, '../src/vuex'),
-      '_views': path.resolve(__dirname, '../src/views'),
-      '_api': path.resolve(__dirname, '../src/api')
+      '_views': path.resolve(__dirname, '../src/views')
     }
   },
   resolveLoader: {
