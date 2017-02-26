@@ -6,6 +6,7 @@
 </template>
 
 <script>
+
 import store from './vuex/index'
   export default {
     data: function () {
