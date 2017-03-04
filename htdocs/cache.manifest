@@ -1,0 +1,29 @@
+CACHE MANIFEST
+
+# VERSION 1.0.1
+
+# 直接缓存的文件
+CACHE:
+
+jianzhang.wilsonliu.cn/FrontEnd/dist/static/js/app.4502d09e98016aefa9e1.js
+jianzhang.wilsonliu.cn/FrontEnd/dist/static/js/manifest.45b0f03d4ee7cde9d493.js
+jianzhang.wilsonliu.cn/FrontEnd/dist/static/css/app.eaa54fee645a747824631dfaa50a94a3.css
+jianzhang.wilsonliu.cn/FrontEnd/dist/static/js/manifest.ae42baa58efe8a927cfa.js
+
+# 需要在线访问的文件
+NETWORK:
+*
+# 替代方案
+FALLBACK:
+
+
+                 
+                     
+                   
+                
+     
+              
+         
+               
+ 
+           
